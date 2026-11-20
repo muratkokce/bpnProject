@@ -57,6 +57,27 @@
 	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>fonts/Urbanist-Thin.ttf</string>
+		<string>fonts/Urbanist-ThinItalic.ttf</string>
+		<string>fonts/Urbanist-ExtraLight.ttf</string>
+		<string>fonts/Urbanist-ExtraLightItalic.ttf</string>
+		<string>fonts/Urbanist-Light.ttf</string>
+		<string>fonts/Urbanist-LightItalic.ttf</string>
+		<string>fonts/Urbanist-Regular.ttf</string>
+		<string>fonts/Urbanist-Italic.ttf</string>
+		<string>fonts/Urbanist-Medium.ttf</string>
+		<string>fonts/Urbanist-MediumItalic.ttf</string>
+		<string>fonts/Urbanist-SemiBold.ttf</string>
+		<string>fonts/Urbanist-SemiBoldItalic.ttf</string>
+		<string>fonts/Urbanist-Bold.ttf</string>
+		<string>fonts/Urbanist-BoldItalic.ttf</string>
+		<string>fonts/Urbanist-ExtraBold.ttf</string>
+		<string>fonts/Urbanist-ExtraBoldItalic.ttf</string>
+		<string>fonts/Urbanist-Black.ttf</string>
+		<string>fonts/Urbanist-BlackItalic.ttf</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>arm64</string>

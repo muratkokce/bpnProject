@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <font android:font="@font/urbanist_100" android:fontStyle="normal" android:fontWeight="100" />
+    <font android:font="@font/urbanist_200" android:fontStyle="normal" android:fontWeight="200" />
+    <font android:font="@font/urbanist_300" android:fontStyle="normal" android:fontWeight="300" />
+    <font android:font="@font/urbanist_400" android:fontStyle="normal" android:fontWeight="400" />
+    <font android:font="@font/urbanist_500" android:fontStyle="normal" android:fontWeight="500" />
+    <font android:font="@font/urbanist_600" android:fontStyle="normal" android:fontWeight="600" />
+    <font android:font="@font/urbanist_700" android:fontStyle="normal" android:fontWeight="700" />
+    <font android:font="@font/urbanist_800" android:fontStyle="normal" android:fontWeight="800" />
+    <font android:font="@font/urbanist_900" android:fontStyle="normal" android:fontWeight="900" />
+</font-family>
