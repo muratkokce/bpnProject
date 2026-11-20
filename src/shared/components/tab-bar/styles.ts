@@ -5,7 +5,7 @@ export const TabBarContainer = styled.View`
     flexDirection: 'row',
     backgroundColor: colors.background.white,
     paddingHorizontal: normalizeSize(16),
-    marginBottom: insets.bottom,
+    paddingBottom: insets.bottom,
     borderTopLeftRadius: normalizeSize(12),
     borderTopRightRadius: normalizeSize(12),
     justifyContent: 'space-between',

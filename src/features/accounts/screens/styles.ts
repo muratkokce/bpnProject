@@ -1,5 +1,7 @@
 import styled from 'styled-components/native';
 
+import { Text } from '@/shared/components/text';
+
 export const AccountsContainer = styled.View`
   ${({ theme: { colors } }) => ({
     flex: 1,
@@ -9,14 +11,14 @@ export const AccountsContainer = styled.View`
   })}
 `;
 
-export const Title = styled.Text`
+export const Title = styled(Text)`
   ${() => ({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
   })}
 `;
-export const Description = styled.Text`
+export const Description = styled(Text)`
   ${() => ({
     fontSize: 16,
     color: '#666',

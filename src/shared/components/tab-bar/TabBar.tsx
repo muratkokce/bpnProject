@@ -1,17 +1,22 @@
+import React from 'react';
+
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import { SvgProps } from 'react-native-svg';
+
+import { TabRoutes } from '@/app/navigation/routes';
 import AccountsIcon from '@/assets/icons/accounts.svg';
 import CardsIcon from '@/assets/icons/cards.svg';
 import MenuIcon from '@/assets/icons/menu.svg';
 import { useTheme } from '@/assets/theme';
-import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import React from 'react';
-import { Text } from 'react-native';
-import { SvgProps } from 'react-native-svg';
+import { Text } from '@/shared/components/text';
+
+
 import { TabBarContainer, TabBarContent } from './styles';
 
 const tabs: Record<string, { label: string; Icon: React.ComponentType<SvgProps> }> = {
-  Accounts: { label: 'Hesaplarım', Icon: AccountsIcon },
-  Cards: { label: 'Kartlarım', Icon: CardsIcon },
-  Transactions: { label: 'İşlemler', Icon: MenuIcon },
+  [TabRoutes.Accounts]: { label: 'Hesaplarım', Icon: AccountsIcon },
+  [TabRoutes.Cards]: { label: 'Kartlarım', Icon: CardsIcon },
+  [TabRoutes.Transactions]: { label: 'İşlemler', Icon: MenuIcon },
 };
 
 export const TabBar = ({ state, navigation }: BottomTabBarProps) => {
@@ -41,14 +46,14 @@ export const TabBar = ({ state, navigation }: BottomTabBarProps) => {
 
         return (
           <TabBarContent
-            key={route.key}
+            accessibilityLabel={tab.label}
             accessibilityRole="tab"
             accessibilityState={{ selected: focused }}
-            accessibilityLabel={tab.label}
-            onPress={onPress}
+            key={route.key}
             onLongPress={() => navigation.emit({ type: 'tabLongPress', target: route.key })}
+            onPress={onPress}
           >
-            <Icon width={normalizeSize(24)} height={normalizeSize(24)} color={color} />
+            <Icon color={color} height={normalizeSize(24)} width={normalizeSize(24)} />
             <Text style={{ color, fontSize: normalizeSize(12), marginTop: normalizeSize(4) }}>
               {tab.label}
             </Text>
