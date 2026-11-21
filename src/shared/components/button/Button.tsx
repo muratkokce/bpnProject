@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { useTheme } from 'styled-components/native';
-
 import { Text } from '../text';
 
 import { ButtonContainer } from './styles';
@@ -23,7 +21,6 @@ const Button = React.forwardRef<any, ButtonProps>(
     },
     ref
   ) => {
-    const { colors } = useTheme();
     return (
       <ButtonContainer
         backgroundColor={backgroundColor}
@@ -34,12 +31,7 @@ const Button = React.forwardRef<any, ButtonProps>(
         ref={ref}
         {...props}
       >
-        <Text
-          color={textColor || colors.text.primary}
-          textAlign="center"
-          variant={textVariant}
-          {...textProps}
-        >
+        <Text color={textColor} textAlign="center" variant={textVariant} {...textProps}>
           {text}
         </Text>
       </ButtonContainer>

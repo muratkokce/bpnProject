@@ -1,13 +1,36 @@
 import React from 'react';
 
-import { Description, Title, TransactionsContainer } from './styles';
+import { Alert } from 'react-native';
 
-const TransactionsScreen = () => {
+import { TabRoutes } from '@/app/navigation/routes';
+import type { RootTabScreenProps } from '@/app/navigation/types';
+import { MenuItem } from '@/shared/components/menu-item';
+import { Screen } from '@/shared/components/screen/Screen';
+
+import { TransactionMenuItems } from '../constants';
+
+import { MenuItemWrapper } from './styles';
+
+const TransactionsScreen = ({ navigation }: RootTabScreenProps<typeof TabRoutes.Transactions>) => {
   return (
-    <TransactionsContainer>
-      <Title>İşlemler</Title>
-      <Description>Hesap işlemleriniz burada görüntülenecek</Description>
-    </TransactionsContainer>
+    <Screen style={{ paddingBottom: 0 }}>
+      {TransactionMenuItems.map(({ title, icon: Icon, isNewMenu, route }) => (
+        <MenuItemWrapper key={title}>
+          <MenuItem
+            icon={<Icon />}
+            isNewMenu={isNewMenu}
+            onPress={() => {
+              if (route) {
+                navigation.navigate(route);
+              } else {
+                Alert.alert(title, 'Bu işlem henüz kullanılamıyor.');
+              }
+            }}
+            title={title}
+          />
+        </MenuItemWrapper>
+      ))}
+    </Screen>
   );
 };
 

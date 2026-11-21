@@ -8,5 +8,6 @@ export const TEXT_VARIANTS = {
   bodyMediumRight: { fontSize: 14, fontWeight: '500', lineHeight: 16.8, letterSpacing: 0.2 },
   captionBold: { fontSize: 12, fontWeight: '700', lineHeight: 14.4, letterSpacing: 0.2 },
   captionRegular: { fontSize: 12, fontWeight: '400', lineHeight: 14.4, letterSpacing: 0.2 },
-  captionSmallRight: { fontSize: 10, fontWeight: '400', lineHeight: 12, letterSpacing: 0.2 },
+  captionSmall: { fontSize: 10, fontWeight: '400', lineHeight: 12, letterSpacing: 0.2 },
+  captionSmallBoldCenter: { fontSize: 10, fontWeight: '700', lineHeight: 12, letterSpacing: 0.2 },
 } as const;

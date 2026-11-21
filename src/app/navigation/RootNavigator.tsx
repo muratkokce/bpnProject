@@ -8,6 +8,8 @@ import CardsScreen from '@/features/cards/screens/CardsScreen';
 import TransactionsScreen from '@/features/transactions/screens/TransactionsScreen';
 import { TabBar } from '@/shared/components/tab-bar';
 
+import { MainTabHeader } from '../components/MainTabHeader';
+
 import { FamilyNavigator } from './family-navigation/FamilyNavigator';
 import { RootRoutes, TabRoutes } from './routes';
 import { RootStackParamList, RootTabParamList } from './types';
@@ -17,7 +19,20 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const MainTabs = () => {
   return (
-    <Tab.Navigator tabBar={(props) => <TabBar {...props} />}>
+    <Tab.Navigator
+      screenOptions={{
+        header: ({ options, route }) => (
+          <MainTabHeader
+            title={
+              typeof options.headerTitle === 'string'
+                ? options.headerTitle
+                : options.title ?? route.name
+            }
+          />
+        ),
+      }}
+      tabBar={(props) => <TabBar {...props} />}
+    >
       <Tab.Screen
         component={AccountsScreen}
         name={TabRoutes.Accounts}

@@ -1,5 +1,20 @@
 import styled from 'styled-components/native';
 
+export const MainTabHeaderContainer = styled.View`
+  ${({ theme: { colors, insets } }) => ({
+    backgroundColor: colors.background.secondary,
+    paddingTop: insets.top,
+  })}
+`;
+
+export const MainTabHeaderContent = styled.View`
+  ${({ theme: { normalizeSize } }) => ({
+    padding: normalizeSize(16),
+    justifyContent: 'center',
+    alignItems: 'center',
+  })}
+`;
+
 export const NavigationBarContainer = styled.View`
   ${({ theme: { colors, insets } }) => ({
     backgroundColor: colors.background.purple,

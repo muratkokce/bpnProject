@@ -3,7 +3,6 @@ import styled from 'styled-components/native';
 export const ScreenContainer = styled.View<{ insetTop: number; insetBottom: number }>`
   ${({ theme: { normalizeSize, colors }, insetBottom }) => ({
     flex: 1,
-    paddingTop: normalizeSize(16),
     paddingHorizontal: normalizeSize(24),
     paddingBottom: insetBottom,
     backgroundColor: colors.background.purple,
@@ -26,8 +25,9 @@ export const LoadingContainer = styled.View`
 `;
 
 export const ScreenScrollView = styled.ScrollView`
-  ${() => ({
+  ${({ theme: { normalizeSize } }) => ({
     flex: 1,
+    paddingTop: normalizeSize(16),
   })}
 `;
 
