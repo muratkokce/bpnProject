@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Pressable } from 'react-native';
 
+import { KliqFamilyRoutes } from '@/app/navigation/family-navigation/routes';
 import { RootRoutes, TabRoutes } from '@/app/navigation/routes';
 import { RootTabScreenProps } from '@/app/navigation/types';
 import { Text } from '@/shared/components/text';
@@ -13,7 +14,15 @@ const AccountsScreen = ({ navigation }: RootTabScreenProps<typeof TabRoutes.Acco
     <AccountsContainer>
       <Title>Hesaplarım</Title>
       <Description>Banka hesaplarınız burada görüntülenecek</Description>
-      <Pressable accessibilityRole="button" onPress={() => navigation.navigate(RootRoutes.Family)} style={{ marginTop: 24, padding: 12 }}>
+      <Pressable
+        accessibilityRole="button"
+        onPress={() =>
+          navigation.navigate(RootRoutes.Family, {
+            screen: KliqFamilyRoutes.KliqFamilyListScreen,
+          })
+        }
+        style={{ marginTop: 24, padding: 12 }}
+      >
         <Text>Kliq Ailem</Text>
       </Pressable>
     </AccountsContainer>

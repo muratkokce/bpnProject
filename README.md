@@ -4,6 +4,11 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 > **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
 
+Copy `.env.example` to `.env` and set `API_BASE_URL` for your environment. The
+shared Axios client is exported as `apiClient` from `src/core/api/client`. After
+changing `.env`, restart Metro with `npm start -- --reset-cache`. Values are
+included in the app bundle, so do not put secrets in `.env`.
+
 ## Step 1: Start Metro
 
 First, you will need to run **Metro**, the JavaScript build tool for React Native.

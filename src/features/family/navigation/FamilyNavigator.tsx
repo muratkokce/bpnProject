@@ -3,13 +3,13 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { NavigationBar } from '@/app/components/NavigationBar';
+import { KliqFamilyRoutes } from '@/app/navigation/family-navigation/routes';
+import { FamilyStackParamList } from '@/app/navigation/family-navigation/types';
 
 import AddKliqFamilyMemberScreen from '../screens/add-kliq-family-member/AddKliqFamilyMemberScreen';
-import KliqFamilyDashboardScreen from '../screens/kliq-family-dashboard/KliqFamilyDashboardScreen';
 import KliqFamilyListScreen from '../screens/kliq-family-list/KliqFamilyListScreen';
+import KliqFamilyOnboardingScreen from '../screens/kliq-family-onboarding/KliqFamilyOnboardingScreen';
 
-import { KliqFamilyRoutes } from './routes';
-import { FamilyStackParamList } from './types';
 const Stack = createNativeStackNavigator<FamilyStackParamList>();
 
 export const FamilyNavigator = () => {
@@ -29,8 +29,8 @@ export const FamilyNavigator = () => {
       }}
     >
       <Stack.Screen
-        component={KliqFamilyDashboardScreen}
-        name={KliqFamilyRoutes.KliqFamilyDashboardScreen}
+        component={KliqFamilyOnboardingScreen}
+        name={KliqFamilyRoutes.KliqFamilyOnboardingScreen}
         options={{ title: 'Kliq Ailem' }}
       />
       <Stack.Screen

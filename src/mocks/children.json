@@ -1,0 +1,115 @@
+{
+  "parentInfo": {
+    "parentId": "PRN-90812",
+    "fullName": "Ahmet Yılmaz",
+    "hasActiveContract": true,
+    "maxAllowedChildren": 4
+  },
+  "registeredChildren": [
+    {
+      "id": "chd_101",
+      "fullName": "Can Yılmaz",
+      "maskedIdentityNumber": "123*****890",
+      "birthDate": "2012-05-14",
+      "age": 14,
+      "avatarUrl": "https://api.dicebear.com/7.x/adventurer/svg?seed=Can",
+      "status": "ACTIVE",
+      "addedAt": "2026-02-10T10:30:00Z",
+      "account": {
+        "accountNumber": "1042-8891203",
+        "iban": "TR440006200104200008891203",
+        "branchName": "Kadıköy Şubesi",
+        "currency": "TRY",
+        "balance": 4250.75,
+        "formattedBalance": "4.250,75 TL",
+        "availableBalance": 4100.75,
+        "blockedAmount": 150.0,
+        "card": {
+          "cardId": "crd_5501",
+          "maskedCardNumber": "5400 **** **** 3819",
+          "cardType": "PREPAID_YOUTH",
+          "cardStatus": "ACTIVE",
+          "dailyLimit": 1500.0
+        }
+      }
+    },
+    {
+      "id": "chd_102",
+      "fullName": "Zeynep Nazlıcan İdil Yılmaz",
+      "maskedIdentityNumber": "456*****234",
+      "birthDate": "2015-09-22",
+      "age": 11,
+      "avatarUrl": "https://api.dicebear.com/7.x/adventurer/svg?seed=Zeynep",
+      "status": "ACTIVE",
+      "addedAt": "2026-06-18T14:15:00Z",
+      "account": {
+        "accountNumber": "1042-9920144",
+        "iban": "TR810006200104200009920144",
+        "branchName": "Kadıköy Şubesi",
+        "currency": "TRY",
+        "balance": 0.0,
+        "formattedBalance": "0,00 TL",
+        "availableBalance": 0.0,
+        "blockedAmount": 0.0,
+        "card": {
+          "cardId": "crd_5502",
+          "maskedCardNumber": "5400 **** **** 9012",
+          "cardType": "PREPAID_YOUTH",
+          "cardStatus": "ACTIVE",
+          "dailyLimit": 500.0
+        }
+      }
+    }
+  ],
+  "availableToAddChildren": [
+    {
+      "id": "chd_103",
+      "fullName": "Kerem Yılmaz",
+      "maskedIdentityNumber": "789*****512",
+      "birthDate": "2013-11-03",
+      "age": 12,
+      "avatarUrl": "https://api.dicebear.com/7.x/adventurer/svg?seed=Kerem",
+      "verificationScenario": "SUCCESS",
+      "expectedModal": {
+        "type": "SUCCESS",
+        "title": "Çocuk Ekleme İşlemi Başarılı",
+        "message": "Kerem Yılmaz başarıyla aile hesabınıza tanımlanmıştır. Artık hesap hareketlerini ve izinlerini yönetebilirsiniz.",
+        "primaryButtonText": "Çocuklarıma Git",
+        "secondaryButtonText": "İzinleri Düzenle"
+      }
+    },
+    {
+      "id": "chd_104",
+      "fullName": "Elif Su Yılmaz",
+      "maskedIdentityNumber": "321*****678",
+      "birthDate": "2016-01-19",
+      "age": 10,
+      "avatarUrl": "https://api.dicebear.com/7.x/adventurer/svg?seed=Elif",
+      "verificationScenario": "ERROR_MERNIS_CONTRACT",
+      "expectedModal": {
+        "type": "ERROR",
+        "errorCode": "ERR-CHD-409",
+        "title": "Çocuk Ekleme İşlemi Başarısız",
+        "message": "Elif Su Yılmaz için şubeden alınmış aktif bir veli muvafakatnamesi bulunamadı. Lütfen en yakın şubemize başvurunuz.",
+        "primaryButtonText": "Tekrar Dene",
+        "secondaryButtonText": "Vazgeç"
+      }
+    },
+    {
+      "id": "chd_105",
+      "fullName": "Mert Efe Yılmaz",
+      "maskedIdentityNumber": "654*****904",
+      "birthDate": "2008-03-01",
+      "age": 18,
+      "avatarUrl": "https://api.dicebear.com/7.x/adventurer/svg?seed=Mert",
+      "verificationScenario": "ERROR_AGE_LIMIT",
+      "expectedModal": {
+        "type": "ERROR",
+        "errorCode": "ERR-CHD-422",
+        "title": "Yaş Sınırı Nedeniyle Eklenemedi",
+        "message": "18 yaşını doldurmuş bireyler çocuk hesabı kapsamına dahil edilememektedir.",
+        "primaryButtonText": "Anladım"
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "slides": [
+    {
+      "id": "slide_1",
+      "step": 1,
+      "badgeText": "AİLE BANKACILIĞI",
+      "title": "Çocuğunuzun İlk Banka Hesabını Hemen Açın",
+      "description": "Sözleşmeli veli olarak 18 yaş altı çocuklarınızı kolayca ekleyebilir, finansal okuryazarlık yolculuklarına güvenli bir başlangıç yapmalarını sağlayabilirsiniz.",
+      "illustrationKey": "onboarding_family_1",
+      "image": "first",
+      "highlightBox": {
+        "icon": "shield-check",
+        "text": "Tüm işlemleriniz 7/24 ebeveyn kontrolü ve bildirim güvencesi altındadır."
+      },
+      "ctaText": "Devam Et"
+    },
+    {
+      "id": "slide_2",
+      "step": 2,
+      "badgeText": "HARCAMA KONTROLÜ",
+      "title": "Hesap Hareketlerini Anlık Takip Edin",
+      "description": "Çocuğunuzun yaptığı harcamaları, para transferlerini ve bakiye hareketlerini tek ekrandan inceleyebilir, onaya düşen işlemleri yönetebilirsiniz.",
+      "illustrationKey": "onboarding_tracking_2",
+      "image": "second",
+      "highlightBox": {
+        "icon": "bell-ring",
+        "text": "Belirlediğiniz limit üzerindeki işlemlerde anında onay bildirimi alırsınız."
+      },
+      "ctaText": "Devam Et"
+    },
+    {
+      "id": "slide_3",
+      "step": 3,
+      "badgeText": "YETKİ VE LİMİTLER",
+      "title": "Kart ve Hesap İzinlerini Dilediğinizce Yönetin",
+      "description": "İnternet alışverişi, ATM'den para çekme, temassız ödeme ve yurt dışı kullanım gibi tüm yetkileri tek dokunuşla açıp kapatabilirsiniz.",
+      "illustrationKey": "onboarding_permissions_3",
+      "image": "first",
+      "highlightBox": {
+        "icon": "shield-check",
+        "text": "İzinleri istediğiniz an güncelleyebilir, acil durumda kartı geçici olarak dondurabilirsiniz."
+      },
+      "ctaText": "Çocuk Ekle"
+    }
+  ]
+}

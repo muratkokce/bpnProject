@@ -12,6 +12,7 @@ export const colors = {
   },
   opacity: {
     blackOpacity10: '#0000001A',
+    overlay: 'rgba(0, 0, 0, 0.3)',
   },
   text: {
     primary: '#222B45',

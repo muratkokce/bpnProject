@@ -39,9 +39,27 @@ export const DotButton = styled.Pressable<{ $active: boolean }>`
   })}
 `;
 
-export const TextContainer = styled.View`
+export const InfoContainer = styled.View`
   ${({ theme: { normalizeSize } }) => ({
     marginTop: normalizeSize(32),
     gap: normalizeSize(12),
+  })}
+`;
+
+export const Badge = styled.View`
+  ${({ theme: { colors, normalizeSize } }) => ({
+    backgroundColor: colors.primary500,
+    borderRadius: normalizeSize(20),
+    paddingHorizontal: normalizeSize(12),
+    paddingVertical: normalizeSize(4),
+    alignSelf: 'flex-start',
+  })}
+`;
+
+export const HighlightBox = styled.View`
+  ${({ theme: { colors, normalizeSize } }) => ({
+    backgroundColor: colors.background.yellow,
+    borderRadius: normalizeSize(12),
+    padding: normalizeSize(12),
   })}
 `;

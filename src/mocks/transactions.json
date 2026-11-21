@@ -1,0 +1,167 @@
+{
+  "transactionsByChild": {
+    "chd_101": {
+      "childId": "chd_101",
+      "summary": {
+        "totalIncome": 5000.0,
+        "totalExpense": 749.25,
+        "pendingApprovalCount": 2,
+        "pendingApprovalTotal": 420.0,
+        "periodLabel": "Ekim 2026"
+      },
+      "filterTabs": [
+        { "key": "ALL", "label": "Tümü" },
+        { "key": "EXPENSE", "label": "Harcamalar" },
+        { "key": "INCOME", "label": "Gelen Transferler" },
+        { "key": "PENDING_APPROVAL", "label": "Onay Bekleyenler" }
+      ],
+      "items": [
+        {
+          "id": "trx_9001",
+          "title": "Steam Oyun Mağazası",
+          "category": "Dijital Oyun & Eğlence",
+          "categoryIcon": "gamepad",
+          "type": "EXPENSE",
+          "status": "PENDING_APPROVAL",
+          "amount": -270.0,
+          "formattedAmount": "-270,00 TL",
+          "currency": "TRY",
+          "date": "2026-10-23T13:45:00Z",
+          "formattedDate": "23 Eki 2026, 13:45",
+          "channel": "E_COMMERCE",
+          "requiresParentAction": true,
+          "approvalNote": "E-Ticaret harcama izni onayı bekleniyor"
+        },
+        {
+          "id": "trx_9002",
+          "title": "D&R Kitap ve Kırtasiye",
+          "category": "Eğitim & Kırtasiye",
+          "categoryIcon": "book-open",
+          "type": "EXPENSE",
+          "status": "PENDING_APPROVAL",
+          "amount": -150.0,
+          "formattedAmount": "-150,00 TL",
+          "currency": "TRY",
+          "date": "2026-10-23T11:20:00Z",
+          "formattedDate": "23 Eki 2026, 11:20",
+          "channel": "POS_CONTACTLESS",
+          "requiresParentAction": true,
+          "approvalNote": "Günlük harcama limiti aşımı nedeniyle onay bekleniyor"
+        },
+        {
+          "id": "trx_9003",
+          "title": "Ahmet Yılmaz - Haftalık Harçlık",
+          "category": "Harçlık / Para Transferi",
+          "categoryIcon": "arrow-down-left",
+          "type": "INCOME",
+          "status": "COMPLETED",
+          "amount": 2000.0,
+          "formattedAmount": "+2.000,00 TL",
+          "currency": "TRY",
+          "date": "2026-10-21T09:00:00Z",
+          "formattedDate": "21 Eki 2026, 09:00",
+          "channel": "FAST_TRANSFER",
+          "requiresParentAction": false
+        },
+        {
+          "id": "trx_9004",
+          "title": "Okul Kantini POS",
+          "category": "Yeme & İçme",
+          "categoryIcon": "utensils",
+          "type": "EXPENSE",
+          "status": "COMPLETED",
+          "amount": -125.5,
+          "formattedAmount": "-125,50 TL",
+          "currency": "TRY",
+          "date": "2026-10-20T12:30:00Z",
+          "formattedDate": "20 Eki 2026, 12:30",
+          "channel": "POS_CONTACTLESS",
+          "requiresParentAction": false
+        },
+        {
+          "id": "trx_9005",
+          "title": "İBB İstanbulkart Yükleme",
+          "category": "Ulaşım",
+          "categoryIcon": "bus",
+          "type": "EXPENSE",
+          "status": "COMPLETED",
+          "amount": -200.0,
+          "formattedAmount": "-200,00 TL",
+          "currency": "TRY",
+          "date": "2026-10-18T08:15:00Z",
+          "formattedDate": "18 Eki 2026, 08:15",
+          "channel": "MOBILE_APP",
+          "requiresParentAction": false
+        },
+        {
+          "id": "trx_9006",
+          "title": "Migros Jet",
+          "category": "Market",
+          "categoryIcon": "shopping-bag",
+          "type": "EXPENSE",
+          "status": "COMPLETED",
+          "amount": -98.75,
+          "formattedAmount": "-98,75 TL",
+          "currency": "TRY",
+          "date": "2026-10-16T16:40:00Z",
+          "formattedDate": "16 Eki 2026, 16:40",
+          "channel": "POS_CHIP",
+          "requiresParentAction": false
+        },
+        {
+          "id": "trx_9007",
+          "title": "Ortak ATM Para Çekme",
+          "category": "Nakit Çekim",
+          "categoryIcon": "banknote",
+          "type": "EXPENSE",
+          "status": "COMPLETED",
+          "amount": -325.0,
+          "formattedAmount": "-325,00 TL",
+          "currency": "TRY",
+          "date": "2026-10-14T15:10:00Z",
+          "formattedDate": "14 Eki 2026, 15:10",
+          "channel": "ATM_QR",
+          "requiresParentAction": false
+        },
+        {
+          "id": "trx_9008",
+          "title": "Ahmet Yılmaz - Eğitim Desteği",
+          "category": "Harçlık / Para Transferi",
+          "categoryIcon": "arrow-down-left",
+          "type": "INCOME",
+          "status": "COMPLETED",
+          "amount": 3000.0,
+          "formattedAmount": "+3.000,00 TL",
+          "currency": "TRY",
+          "date": "2026-10-05T10:00:00Z",
+          "formattedDate": "05 Eki 2026, 10:00",
+          "channel": "INTERNAL_TRANSFER",
+          "requiresParentAction": false
+        }
+      ]
+    },
+    "chd_102": {
+      "childId": "chd_102",
+      "summary": {
+        "totalIncome": 0.0,
+        "totalExpense": 0.0,
+        "pendingApprovalCount": 0,
+        "pendingApprovalTotal": 0.0,
+        "periodLabel": "Ekim 2026"
+      },
+      "filterTabs": [
+        { "key": "ALL", "label": "Tümü" },
+        { "key": "EXPENSE", "label": "Harcamalar" },
+        { "key": "INCOME", "label": "Gelen Transferler" },
+        { "key": "PENDING_APPROVAL", "label": "Onay Bekleyenler" }
+      ],
+      "items": [],
+      "emptyState": {
+        "illustrationKey": "empty_transactions",
+        "title": "Henüz Hesap Hareketi Bulunmuyor",
+        "description": "Çocuğunuzun hesabında seçili döneme ait herhangi bir harcama veya para transferi işlemi gerçekleşmemiştir.",
+        "ctaText": "Harçlık Gönder"
+      }
+    }
+  }
+}

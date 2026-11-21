@@ -3,6 +3,8 @@ import { StatusBar, useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'styled-components/native';
 
+import { Loading } from '@/shared/components/loading';
+
 import { RootNavigator } from './src/app/navigation';
 import { useTheme } from './src/assets/theme';
 
@@ -11,12 +13,15 @@ function ThemedApp() {
   const theme = useTheme();
 
   return (
-    <ThemeProvider theme={theme}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NavigationContainer>
-        <RootNavigator />
-      </NavigationContainer>
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={theme}>
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
+        <Loading />
+      </ThemeProvider>
+    </>
   );
 }
 

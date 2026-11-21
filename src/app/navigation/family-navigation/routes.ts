@@ -1,5 +1,5 @@
 export const KliqFamilyRoutes = {
-  KliqFamilyDashboardScreen: 'KliqFamilyDashboardScreen',
+  KliqFamilyOnboardingScreen: 'KliqFamilyOnboardingScreen',
   KliqFamilyListScreen: 'KliqFamilyListScreen',
   AddKliqFamilyMemberScreen: 'AddKliqFamilyMemberScreen',
 } as const;

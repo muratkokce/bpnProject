@@ -1,0 +1,128 @@
+{
+  "permissionsByChild": {
+    "chd_101": {
+      "childId": "chd_101",
+      "lastUpdatedAt": "2026-10-20T18:00:00Z",
+      "tabs": [
+        {
+          "tabId": "ACCOUNT_PERMISSIONS",
+          "tabTitle": "Hesap Yetkileri",
+          "masterToggle": {
+            "id": "perm_account_active",
+            "title": "Hesap Kullanıma Açık",
+            "description": "Kapatıldığında çocuğunuz hesabından hiçbir finansal işlem gerçekleştiremez.",
+            "isEnabled": true
+          },
+          "permissions": [
+            {
+              "id": "perm_money_transfer",
+              "title": "Para Transferi (EFT / FAST / Havale)",
+              "description": "Başka hesaplara para gönderimi yapabilmesini sağlar.",
+              "isEnabled": false,
+              "dependsOn": "perm_account_active",
+              "requiresConfirmationOnEnable": true,
+              "confirmationWarning": "Çocuğunuzun hesabından üçüncü kişilere para transferi yetkisini açmak üzeresiniz. Onaylıyor musunuz?"
+            },
+            {
+              "id": "perm_qr_operations",
+              "title": "QR Kod ile İşlem Yapma",
+              "description": "Mobil uygulama üzerinden QR ile para çekme ve ödeme işlemlerine izin verir.",
+              "isEnabled": true,
+              "dependsOn": "perm_account_active",
+              "requiresConfirmationOnEnable": false
+            },
+            {
+              "id": "perm_bill_payment",
+              "title": "Fatura ve Kurum Ödemeleri",
+              "description": "Ulaşım kartı dolumu, GSM TL yükleme ve oyun kodu ödemelerine izin verir.",
+              "isEnabled": true,
+              "dependsOn": "perm_account_active",
+              "requiresConfirmationOnEnable": false
+            },
+            {
+              "id": "perm_parent_approval_mode",
+              "title": "İşlemlerde Veli Onayı Zorunluluğu",
+              "description": "500 TL üzerindeki tüm işlemlerde telefonunuza anlık onay bildirimi gönderilir.",
+              "isEnabled": true,
+              "dependsOn": "perm_account_active",
+              "requiresConfirmationOnEnable": false
+            }
+          ]
+        },
+        {
+          "tabId": "CARD_PERMISSIONS",
+          "tabTitle": "Kart Yetkileri",
+          "cardSummary": {
+            "cardId": "crd_5501",
+            "cardName": "Can'ın Genç Kartı",
+            "maskedNumber": "5400 **** **** 3819",
+            "badge": "AKTİF"
+          },
+          "masterToggle": {
+            "id": "perm_card_active",
+            "title": "Kartı Kullanıma Aç / Geçici Dondur",
+            "description": "Kart kapatıldığında tüm fiziksel ve sanal POS işlemleri geçici olarak durdurulur.",
+            "isEnabled": true
+          },
+          "permissions": [
+            {
+              "id": "perm_domestic_pos",
+              "title": "Yurt İçi Alışveriş (Fiziksel POS)",
+              "description": "Mağaza ve marketlerde yapılan fiziksel kart harcamaları.",
+              "isEnabled": true,
+              "dependsOn": "perm_card_active",
+              "requiresConfirmationOnEnable": false
+            },
+            {
+              "id": "perm_contactless",
+              "title": "Temassız Ödeme Özelliği",
+              "description": "Şifresiz hızlı temassız ödeme işlemlerine izin verir.",
+              "isEnabled": true,
+              "dependsOn": "perm_domestic_pos",
+              "requiresConfirmationOnEnable": false
+            },
+            {
+              "id": "perm_ecommerce",
+              "title": "İnternetten Alışveriş (E-Ticaret)",
+              "description": "Web siteleri ve mobil uygulamalar üzerinden yapılan online ödemeler.",
+              "isEnabled": false,
+              "dependsOn": "perm_card_active",
+              "requiresConfirmationOnEnable": true,
+              "confirmationWarning": "İnternetten alışveriş yetkisini açtığınızda çocuğunuz 3D Secure doğrulaması ile online harcama yapabilir."
+            },
+            {
+              "id": "perm_atm_withdraw",
+              "title": "ATM'den Nakit Para Çekme",
+              "description": "Yurt içi tüm ATM'lerden günlük limit dahilinde para çekimi.",
+              "isEnabled": true,
+              "dependsOn": "perm_card_active",
+              "requiresConfirmationOnEnable": false
+            },
+            {
+              "id": "perm_international",
+              "title": "Yurt Dışı Kullanım ve Döviz İşlemleri",
+              "description": "Yurt dışı fiziki POS ve yabancı kaynaklı e-ticaret sitelerinde kullanım.",
+              "isEnabled": false,
+              "dependsOn": "perm_card_active",
+              "requiresConfirmationOnEnable": true,
+              "confirmationWarning": "Yurt dışı kullanım yetkisini açmak üzeresiniz. Kur farkı kaynaklı harcamalar oluşabilir."
+            }
+          ]
+        }
+      ],
+      "notifications": {
+        "saveSuccessToast": {
+          "type": "SUCCESS",
+          "title": "Değişiklikler Kaydedildi",
+          "message": "Çocuk hesabı ve kart yetkileri başarıyla güncellenmiştir."
+        },
+        "saveConfirmationModal": {
+          "title": "İzin Değişikliklerini Onaylıyor musunuz?",
+          "description": "Yaptığınız yetki değişiklikleri anında yürürlüğe girecek ve çocuğunuzun hesabına uygulanacaktır.",
+          "confirmButtonText": "Onayla ve Kaydet",
+          "cancelButtonText": "Vazgeç"
+        }
+      }
+    }
+  }
+}
