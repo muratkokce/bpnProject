@@ -1,21 +1,22 @@
 import { useEffect, useState } from 'react';
 
 import { globalAxios } from '@/core/api/globalAxios';
+import { API_ENDPOINTS } from '@/core/constants';
+import { useLoadingStore } from '@/core/store';
 
-import { SliderItem } from '../components/slider';
+import { SliderItem } from '../kliq-family-onboarding/components/slider';
 
 export const useKliqFamilyOnboarding = (attempt: number) => {
   const [data, setData] = useState<SliderItem[]>([]);
   const [error, setError] = useState<Error | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const isLoading = useLoadingStore((state) => state.isLoading);
 
   useEffect(() => {
     const controller = new AbortController();
     setError(null);
-    setIsLoading(true);
 
     globalAxios
-      .get<{ slides: SliderItem[] }>('c/5ac4-7b2b-4fd6-8fa3', {
+      .get<{ slides: SliderItem[] }>(API_ENDPOINTS.FAMILY_ONBOARDING, {
         signal: controller.signal,
       })
       .then(({ data: response }) => {
@@ -29,11 +30,6 @@ export const useKliqFamilyOnboarding = (attempt: number) => {
       .catch((requestError: unknown) => {
         if (!controller.signal.aborted) {
           setError(requestError instanceof Error ? requestError : new Error('Request failed'));
-        }
-      })
-      .finally(() => {
-        if (!controller.signal.aborted) {
-          setIsLoading(false);
         }
       });
 

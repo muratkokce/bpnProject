@@ -12,8 +12,9 @@ import { InfoCard } from '@/shared/components/info-card';
 import { Screen } from '@/shared/components/screen';
 import { Text } from '@/shared/components/text';
 
+import { useKliqFamilyOnboarding } from '../hooks/useKliqFamilyOnboarding';
+
 import { mapOnboardingItems } from './constants';
-import { useKliqFamilyOnboarding } from './hooks/useKliqFamilyOnboarding';
 
 const KliqFamilyOnboardingScreen = ({
   navigation,

@@ -1,33 +1,36 @@
 import React from 'react';
 
-import { Pressable, ScrollView, View } from 'react-native';
-
 import { KliqFamilyRoutes } from '@/app/navigation/family-navigation/routes';
 import { FamilyScreenProps } from '@/app/navigation/family-navigation/types';
+import { useChildrenData } from '@/features/family/screens/hooks/useChildrenStore';
+import { Screen } from '@/shared/components/screen';
 import { Text } from '@/shared/components/text';
 
-import { styles } from '../styles';
+import { KliqFamilyListItems } from './components/kliq-family-list-items/KliqFamilyListItems';
 
 const KliqFamilyListScreen = ({
   navigation,
 }: FamilyScreenProps<typeof KliqFamilyRoutes.KliqFamilyListScreen>) => {
+  const { data, isLoading } = useChildrenData();
+
+  const navigateToAddMember = () => navigation.navigate(KliqFamilyRoutes.AddKliqFamilyMemberScreen);
+
+  if (isLoading) {
+    return null;
+  }
+
+  const children = data?.registeredChildren || [];
+
   return (
-    <ScrollView contentContainerStyle={styles.content} style={styles.screen}>
-      <View style={styles.listHeader}>
-        <Text style={styles.eyebrow}>KLİQ AİLEM</Text>
-        <Text style={styles.title}>Çocuklarım</Text>
-        <Text style={styles.description}>
-          Ailenize eklediğiniz çocukları burada görebilirsiniz.
-        </Text>
-      </View>
-      <Pressable
-        accessibilityRole="button"
-        onPress={() => navigation.navigate(KliqFamilyRoutes.AddKliqFamilyMemberScreen)}
-        style={styles.button}
-      >
-        <Text style={styles.buttonText}>Çocuk Ekle</Text>
-      </Pressable>
-    </ScrollView>
+    <Screen
+      primaryButton={{
+        text: 'Kliq Aileme Ekle',
+        onPress: navigateToAddMember,
+      }}
+    >
+      <Text variant="captionBold">Kliq Ailem</Text>
+      <KliqFamilyListItems children={children} />
+    </Screen>
   );
 };
 
