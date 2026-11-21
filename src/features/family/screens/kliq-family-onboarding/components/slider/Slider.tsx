@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef, useState } from 'react';
+import React, { forwardRef, useRef, useState, useMemo, useCallback } from 'react';
 
 import {
   LayoutChangeEvent,
@@ -46,66 +46,73 @@ export const Slider = forwardRef<SliderScrollView, SliderProps>(
       }
     };
 
-    const handleDotPress = (index: number) => {
-      if (scrollRef && 'current' in scrollRef) {
-        scrollRef.current?.scrollTo({ x: width * index, animated: true });
-      }
-      setActiveIndex(index);
-      onSlideChange?.(index);
-    };
+    const handleDotPress = useCallback(
+      (index: number) => {
+        if (scrollRef && 'current' in scrollRef) {
+          scrollRef.current?.scrollTo({ x: width * index, animated: true });
+        }
+        setActiveIndex(index);
+        onSlideChange?.(index);
+      },
+      [width, scrollRef, onSlideChange]
+    );
+
+    const slides = useMemo(
+      () =>
+        items.map(({ id, badgeText, title, description, highlightBox, icon: Icon }) => (
+          <SliderPage $width={width} key={id}>
+            {Icon && <Icon height={normalizeSize(200)} width={normalizeSize(280)} />}
+            {!!items.length && (
+              <Pagination>
+                {items.map(({ id: itemId, docIcon: PaginationIcon }, index) => (
+                  <DotButton
+                    $active={index === activeIndex}
+                    accessibilityLabel={`${index + 1} / ${items.length}`}
+                    accessibilityRole="button"
+                    accessibilityState={{ selected: index === activeIndex }}
+                    key={itemId}
+                    onPress={() => handleDotPress(index)}
+                  >
+                    {PaginationIcon && (
+                      <PaginationIcon
+                        color={
+                          index === activeIndex ? colors.background.white : colors.secondary
+                        }
+                        height={normalizeSize(20)}
+                        width={normalizeSize(20)}
+                      />
+                    )}
+                  </DotButton>
+                ))}
+              </Pagination>
+            )}
+            <InfoContainer>
+              <Badge>
+                <Text variant="captionBold">{badgeText}</Text>
+              </Badge>
+              <Text variant="titleSmall">{title}</Text>
+              <Text variant="bodyMedium">{description}</Text>
+              <HighlightBox>
+                <Text variant="captionRegular">{highlightBox.text}</Text>
+              </HighlightBox>
+            </InfoContainer>
+          </SliderPage>
+        )),
+      [items, activeIndex, width, normalizeSize, colors, handleDotPress]
+    );
 
     return (
       <SliderContainer onLayout={handleLayout}>
-        {width > 0 && (
-          <ScrollView
-            horizontal
-            pagingEnabled
-            onMomentumScrollEnd={handleScrollEnd}
-            ref={scrollRef as React.Ref<SliderScrollView>}
-            scrollEventThrottle={16}
-            showsHorizontalScrollIndicator={false}
-          >
-            {items.map(({ id, badgeText, title, description, highlightBox, icon: Icon }) => (
-              <SliderPage $width={width} key={id}>
-                {Icon && <Icon height={normalizeSize(200)} width={normalizeSize(280)} />}
-                {!!items.length && (
-                  <Pagination>
-                    {items.map(({ id: itemId, docIcon: PaginationIcon }, index) => (
-                      <DotButton
-                        $active={index === activeIndex}
-                        accessibilityLabel={`${index + 1} / ${items.length}`}
-                        accessibilityRole="button"
-                        accessibilityState={{ selected: index === activeIndex }}
-                        key={itemId}
-                        onPress={() => handleDotPress(index)}
-                      >
-                        {PaginationIcon && (
-                          <PaginationIcon
-                            color={
-                              index === activeIndex ? colors.background.white : colors.secondary
-                            }
-                            height={normalizeSize(20)}
-                            width={normalizeSize(20)}
-                          />
-                        )}
-                      </DotButton>
-                    ))}
-                  </Pagination>
-                )}
-                <InfoContainer>
-                  <Badge>
-                    <Text variant="captionBold">{badgeText}</Text>
-                  </Badge>
-                  <Text variant="titleSmall">{title}</Text>
-                  <Text variant="bodyMedium">{description}</Text>
-                  <HighlightBox>
-                    <Text variant="captionRegular">{highlightBox.text}</Text>
-                  </HighlightBox>
-                </InfoContainer>
-              </SliderPage>
-            ))}
-          </ScrollView>
-        )}
+        <ScrollView
+          horizontal
+          pagingEnabled
+          onMomentumScrollEnd={handleScrollEnd}
+          ref={scrollRef as React.Ref<SliderScrollView>}
+          scrollEventThrottle={16}
+          showsHorizontalScrollIndicator={false}
+        >
+          {slides}
+        </ScrollView>
       </SliderContainer>
     );
   }

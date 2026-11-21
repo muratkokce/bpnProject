@@ -4,7 +4,7 @@ export const ListItemContainer = styled.Pressable`
   ${({ theme: { colors, normalizeSize } }) => ({
     flexDirection: 'row',
     alignItems: 'center',
-    padding: normalizeSize(16),
+    paddingHorizontal: normalizeSize(16),
     backgroundColor: colors.background.white,
     borderRadius: normalizeSize(12),
   })}

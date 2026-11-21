@@ -9,26 +9,24 @@ const Button = React.forwardRef<any, ButtonProps>(
   (
     {
       text,
-      onPress,
       disabled = false,
-      backgroundColor,
       textColor,
       textVariant = 'titleSmall',
       paddingVertical = 17,
       borderRadius = 12,
       textProps,
+      variant = 'primary',
       ...props
     },
     ref
   ) => {
     return (
       <ButtonContainer
-        backgroundColor={backgroundColor}
         borderRadius={borderRadius}
         disabled={disabled}
-        onPress={onPress}
         paddingVertical={paddingVertical}
         ref={ref}
+        variant={variant}
         {...props}
       >
         <Text color={textColor} textAlign="center" variant={textVariant} {...textProps}>

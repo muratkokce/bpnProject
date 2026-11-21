@@ -25,7 +25,7 @@ export const TransactionMenuItems: TransactionMenuItemType[] = [
     title: 'Kliq Ailem',
     isNewMenu: true,
     icon: FamilyIcon,
-    route: RootRoutes.Family,
+    routeScreen: RootRoutes.Family,
   },
   {
     title: 'Para Yükle',

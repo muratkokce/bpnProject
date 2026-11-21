@@ -2,9 +2,13 @@ import type { ReactNode } from 'react';
 
 import type { PressableProps } from 'react-native';
 
-export interface ListItemProps {
+export interface ListItemChildren {
   icon?: ReactNode;
   title: string;
   onPress: NonNullable<PressableProps['onPress']>;
-  style?: PressableProps['style'];
+}
+
+export interface ListItemProps {
+  children?: ListItemChildren | ListItemChildren[];
+  listTitle?: string;
 }

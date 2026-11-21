@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ActivityIndicator, ViewProps } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 
@@ -16,24 +16,7 @@ import {
   ScreenContent,
   ScreenScrollView,
 } from './styles';
-
-interface ScreenProps extends Omit<ViewProps, 'children'> {
-  children: React.ReactNode;
-  isScreenLoading?: boolean;
-  primaryButton?: {
-    text: string;
-    onPress: () => void;
-    disabled?: boolean;
-    backgroundColor?: string;
-    textColor?: string;
-  };
-  footerComponent?: React.ReactNode;
-  scrollable?: boolean;
-  loadingIndicatorColor?: string;
-  buttonContainerStyle?: ViewProps['style'];
-  buttonContainerBackground?: React.ReactNode;
-  contentContainerStyle?: ViewProps['style'];
-}
+import { ScreenProps } from './types';
 
 const Screen = React.forwardRef<any, ScreenProps>(
   (
@@ -93,9 +76,13 @@ const Screen = React.forwardRef<any, ScreenProps>(
               <Svg height="100%" width="100%">
                 <Defs>
                   <LinearGradient id="buttonBackgroundGradient" x1="0" x2="0" y1="0" y2="1">
-                    <Stop offset="7.08%" stopColor="#F9F8FF" stopOpacity={0} />
-                    <Stop offset="26.64%" stopColor="#F9F8FF" stopOpacity={0.642071} />
-                    <Stop offset="65.76%" stopColor="#F9F8FF" stopOpacity={1} />
+                    <Stop offset="7.08%" stopColor={colors.background.purple} stopOpacity={0} />
+                    <Stop
+                      offset="26.64%"
+                      stopColor={colors.background.purple}
+                      stopOpacity={0.642071}
+                    />
+                    <Stop offset="65.76%" stopColor={colors.background.purple} stopOpacity={1} />
                   </LinearGradient>
                 </Defs>
                 <Rect fill="url(#buttonBackgroundGradient)" height="100%" width="100%" />
@@ -109,6 +96,7 @@ const Screen = React.forwardRef<any, ScreenProps>(
                 onPress={primaryButton.onPress}
                 text={primaryButton.text}
                 textColor={primaryButton.textColor}
+                variant={primaryButton.variant}
               />
             )}
             {footerComponent}

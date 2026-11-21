@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { Alert } from 'react-native';
-
 import { TabRoutes } from '@/app/navigation/routes';
 import type { RootTabScreenProps } from '@/app/navigation/types';
 import { MenuItem } from '@/shared/components/menu-item';
 import { Screen } from '@/shared/components/screen/Screen';
+import { showToast } from '@/shared/utils';
 
 import { TransactionMenuItems } from '../constants';
 
@@ -23,7 +22,7 @@ const TransactionsScreen = ({ navigation }: RootTabScreenProps<typeof TabRoutes.
               if (routeScreen) {
                 navigation.navigate(routeScreen);
               } else {
-                Alert.alert(title, 'Bu işlem henüz kullanılamıyor.');
+                showToast({ message: 'Bu işlem henüz kullanılamıyor.', type: 'info', title });
               }
             }}
             title={title}

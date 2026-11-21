@@ -4,6 +4,7 @@ export const colors = {
   inactive: '#8F9BB3',
   disabled: '#D8D8D8',
   transparent: 'transparent',
+  error: '#F75555',
   background: {
     white: '#FFFFFF',
     purple: '##F9F8FF',

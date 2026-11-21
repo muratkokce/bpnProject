@@ -1,17 +1,15 @@
 import styled from 'styled-components/native';
 
-export const ButtonContainer = styled.Pressable<{
-  disabled?: boolean;
-  backgroundColor?: string;
-  paddingVertical?: number;
-  borderRadius: number;
-}>`
+import { ButtonContainerProps } from './types';
+
+export const ButtonContainer = styled.Pressable<ButtonContainerProps>`
   ${({
     theme: { normalizeSize, colors },
     disabled,
-    backgroundColor,
+    variant,
+    backgroundColor = variant === 'primary' ? colors.primary500 : colors.background.white,
     paddingVertical,
-    borderRadius,
+    borderRadius = 12,
   }) => ({
     width: '100%',
     paddingVertical: normalizeSize(paddingVertical || 14),
@@ -21,5 +19,7 @@ export const ButtonContainer = styled.Pressable<{
     justifyContent: 'center',
     alignItems: 'center',
     opacity: disabled ? 0.5 : 1,
+    borderWidth: variant === 'secondary' ? 1 : 0,
+    borderColor: variant === 'secondary' ? colors.error : 'transparent',
   })}
 `;

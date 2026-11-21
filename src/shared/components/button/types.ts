@@ -13,4 +13,11 @@ export interface ButtonProps extends Omit<PressableProps, 'children'> {
   paddingVertical?: number;
   borderRadius?: number;
   textProps?: Omit<TextProps, 'children' | 'color' | 'variant'>;
+  variant?: 'primary' | 'secondary';
 }
+
+export interface ButtonContainerProps
+  extends Pick<
+    ButtonProps,
+    'backgroundColor' | 'disabled' | 'paddingVertical' | 'borderRadius' | 'variant'
+  > {}
