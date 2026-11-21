@@ -7,7 +7,7 @@ export const ListItemContainer = styled.View`
   })}
 `;
 
-export const ItemCard = styled.View`
+export const ItemCard = styled.Pressable`
   ${({ theme: { colors, normalizeSize } }) => ({
     justifyContent: 'space-between',
     alignItems: 'center',

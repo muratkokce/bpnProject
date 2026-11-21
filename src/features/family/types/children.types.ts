@@ -1,9 +1,29 @@
+export enum CardType {
+  PREPAID_YOUTH = 'PREPAID_YOUTH',
+  PREPAID_STANDARD = 'PREPAID_STANDARD',
+  CREDIT = 'CREDIT',
+}
+
+export enum CardStatus {
+  ACTIVE = 'ACTIVE',
+  INACTIVE = 'INACTIVE',
+  BLOCKED = 'BLOCKED',
+  EXPIRED = 'EXPIRED',
+}
+
 export interface Card {
   cardId: string;
   maskedCardNumber: string;
-  cardType: string;
-  cardStatus: string;
+  cardType: CardType | string;
+  cardStatus: CardStatus | string;
   dailyLimit: number;
+}
+
+export enum ChildStatus {
+  ACTIVE = 'ACTIVE',
+  INACTIVE = 'INACTIVE',
+  PENDING = 'PENDING',
+  BLOCKED = 'BLOCKED',
 }
 
 export interface Account {
@@ -25,7 +45,7 @@ export interface Child {
   birthDate: string;
   age: number;
   avatarUrl: string;
-  status: string;
+  status: ChildStatus | string;
   addedAt: string;
   account?: Account;
 }

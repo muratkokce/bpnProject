@@ -14,14 +14,14 @@ import { MenuItemWrapper } from './styles';
 const TransactionsScreen = ({ navigation }: RootTabScreenProps<typeof TabRoutes.Transactions>) => {
   return (
     <Screen style={{ paddingBottom: 0 }}>
-      {TransactionMenuItems.map(({ title, icon: Icon, isNewMenu, route }) => (
+      {TransactionMenuItems.map(({ title, icon: Icon, isNewMenu, routeScreen }) => (
         <MenuItemWrapper key={title}>
           <MenuItem
             icon={<Icon />}
             isNewMenu={isNewMenu}
             onPress={() => {
-              if (route) {
-                navigation.navigate(route);
+              if (routeScreen) {
+                navigation.navigate(routeScreen);
               } else {
                 Alert.alert(title, 'Bu işlem henüz kullanılamıyor.');
               }

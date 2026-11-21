@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationBar } from '@/app/components/NavigationBar';
 import AddKliqFamilyMemberScreen from '@/features/family/screens/add-kliq-family-member/AddKliqFamilyMemberScreen';
 import KliqFamilyListScreen from '@/features/family/screens/kliq-family-list/KliqFamilyListScreen';
+import KliqFamilyListDetailScreen from '@/features/family/screens/kliq-family-list-detail/KliqFamilyListDetailScreen';
 import KliqFamilyOnboardingScreen from '@/features/family/screens/kliq-family-onboarding/KliqFamilyOnboardingScreen';
 
 import { KliqFamilyRoutes } from './routes';
@@ -41,6 +42,13 @@ export const FamilyNavigator = () => {
         component={AddKliqFamilyMemberScreen}
         name={KliqFamilyRoutes.AddKliqFamilyMemberScreen}
         options={{ title: 'Aile Üyesi Ekle' }}
+      />
+      <Stack.Screen
+        component={KliqFamilyListDetailScreen}
+        name={KliqFamilyRoutes.KliqFamilyListDetailScreen}
+        options={({ route }) => ({
+          title: route.params?.child?.fullName || 'Çocuk Detayı',
+        })}
       />
     </Stack.Navigator>
   );

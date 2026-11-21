@@ -3,6 +3,7 @@ import React from 'react';
 import { KliqFamilyRoutes } from '@/app/navigation/family-navigation/routes';
 import { FamilyScreenProps } from '@/app/navigation/family-navigation/types';
 import { useChildrenData } from '@/features/family/screens/hooks/useChildrenStore';
+import type { Child } from '@/features/family/types/children.types';
 import { Screen } from '@/shared/components/screen';
 import { Text } from '@/shared/components/text';
 
@@ -14,6 +15,10 @@ const KliqFamilyListScreen = ({
   const { data, isLoading } = useChildrenData();
 
   const navigateToAddMember = () => navigation.navigate(KliqFamilyRoutes.AddKliqFamilyMemberScreen);
+
+  const handleChildPress = (child: Child) => {
+    navigation.navigate(KliqFamilyRoutes.KliqFamilyListDetailScreen, { child });
+  };
 
   if (isLoading) {
     return null;
@@ -29,7 +34,7 @@ const KliqFamilyListScreen = ({
       }}
     >
       <Text variant="captionBold">Kliq Ailem</Text>
-      <KliqFamilyListItems children={children} />
+      <KliqFamilyListItems children={children} onChildPress={handleChildPress} />
     </Screen>
   );
 };
