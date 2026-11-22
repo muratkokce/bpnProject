@@ -6,7 +6,7 @@ export const TEXT_VARIANTS = {
   bodyBold: { fontSize: 14, fontWeight: '700', lineHeight: 16.8, letterSpacing: 0.2 },
   bodySemiBold: { fontSize: 14, fontWeight: '600', lineHeight: 16.8, letterSpacing: 0.2 },
   bodyMedium: { fontSize: 14, fontWeight: '500', lineHeight: 16.8, letterSpacing: 0.2 },
-  bodyMediumRight: { fontSize: 14, fontWeight: '500', lineHeight: 16.8, letterSpacing: 0.2 },
+  bodyMediumRegular: { fontSize: 14, fontWeight: '400', lineHeight: 16.8, letterSpacing: 0.2 },
   captionBold: { fontSize: 12, fontWeight: '700', lineHeight: 14.4, letterSpacing: 0.2 },
   captionRegular: { fontSize: 12, fontWeight: '400', lineHeight: 14.4, letterSpacing: 0.2 },
   captionSmall: { fontSize: 10, fontWeight: '400', lineHeight: 12, letterSpacing: 0.2 },

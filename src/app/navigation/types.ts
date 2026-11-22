@@ -2,7 +2,7 @@ import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import { FamilyStackParamList } from '@/features/family/navigation/types';
+import { FamilyStackParamList } from '@/app/navigation/family-navigation/types';
 
 import { RootRoutes, TabRoutes } from './routes';
 
@@ -27,5 +27,3 @@ declare global {
     interface RootParamList extends RootStackParamList {}
   }
 }
-
-

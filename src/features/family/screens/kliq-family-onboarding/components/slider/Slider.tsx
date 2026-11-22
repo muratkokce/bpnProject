@@ -24,9 +24,9 @@ import { SliderProps } from './types';
 type SliderScrollView = React.ElementRef<typeof ScrollView>;
 
 export const Slider = forwardRef<SliderScrollView, SliderProps>(
-  ({ items, onSlideChange, onWidthChange }, ref) => {
+  ({ items, initialWidth, onSlideChange, onWidthChange }, ref) => {
     const internalRef = useRef<SliderScrollView>(null);
-    const [width, setWidth] = useState(0);
+    const [width, setWidth] = useState(initialWidth);
     const [activeIndex, setActiveIndex] = useState(0);
     const { normalizeSize, colors } = useTheme();
 
@@ -75,9 +75,7 @@ export const Slider = forwardRef<SliderScrollView, SliderProps>(
                   >
                     {PaginationIcon && (
                       <PaginationIcon
-                        color={
-                          index === activeIndex ? colors.background.white : colors.secondary
-                        }
+                        color={index === activeIndex ? colors.background.white : colors.secondary}
                         height={normalizeSize(20)}
                         width={normalizeSize(20)}
                       />

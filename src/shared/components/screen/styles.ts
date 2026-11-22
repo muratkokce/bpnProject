@@ -16,14 +16,6 @@ export const ScreenContent = styled.View<{ hasButton: boolean; insetBottom: numb
   })}
 `;
 
-export const LoadingContainer = styled.View`
-  ${() => ({
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  })}
-`;
-
 export const ScreenScrollView = styled.ScrollView`
   ${({ theme: { normalizeSize } }) => ({
     flex: 1,

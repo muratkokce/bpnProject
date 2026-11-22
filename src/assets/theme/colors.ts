@@ -5,6 +5,7 @@ export const colors = {
   disabled: '#D8D8D8',
   transparent: 'transparent',
   error: '#F75555',
+  border: '#9095A2',
   background: {
     white: '#FFFFFF',
     purple: '##F9F8FF',
@@ -13,7 +14,8 @@ export const colors = {
   },
   opacity: {
     blackOpacity10: '#0000001A',
-    overlay: 'rgba(0, 0, 0, 0.3)',
+    overlay30: 'rgba(0, 0, 0, 0.3)',
+    overlay60: 'rgba(0, 0, 0, 0.6)',
     green08: 'rgba(27, 172, 75, 0.08)',
   },
   text: {

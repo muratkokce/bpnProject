@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { ActivityIndicator } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 
@@ -11,7 +10,6 @@ import { Button } from '../button';
 import {
   ButtonContainer,
   ButtonGradient,
-  LoadingContainer,
   ScreenContainer,
   ScreenContent,
   ScreenScrollView,
@@ -38,13 +36,7 @@ const Screen = React.forwardRef<any, ScreenProps>(
     const { colors } = useTheme();
 
     if (isScreenLoading) {
-      return (
-        <ScreenContainer insetBottom={insets.bottom} insetTop={insets.top} ref={ref} {...props}>
-          <LoadingContainer>
-            <ActivityIndicator color={loadingIndicatorColor || colors.primary500} size="large" />
-          </LoadingContainer>
-        </ScreenContainer>
-      );
+      return null;
     }
 
     const content = scrollable ? (

@@ -9,4 +9,5 @@ export interface TransactionMenuItemType {
   icon: ComponentType<SvgProps>;
   isNewMenu?: boolean;
   routeScreen?: typeof RootRoutes.Family;
+  onPress?: () => void;
 }

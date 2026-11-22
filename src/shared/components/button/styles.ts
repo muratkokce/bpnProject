@@ -20,6 +20,6 @@ export const ButtonContainer = styled.Pressable<ButtonContainerProps>`
     alignItems: 'center',
     opacity: disabled ? 0.5 : 1,
     borderWidth: variant === 'secondary' ? 1 : 0,
-    borderColor: variant === 'secondary' ? colors.error : 'transparent',
+    borderColor: variant === 'secondary' ? colors.background.secondary : 'transparent',
   })}
 `;

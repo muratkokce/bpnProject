@@ -8,13 +8,21 @@ import KliqFamilyListScreen from '@/features/family/screens/kliq-family-list/Kli
 import KliqFamilyListDetailScreen from '@/features/family/screens/kliq-family-list-detail/KliqFamilyListDetailScreen';
 import KliqFamilyOnboardingScreen from '@/features/family/screens/kliq-family-onboarding/KliqFamilyOnboardingScreen';
 
+import { useFamilyInitialRoute } from './hooks/useFamilyInitialRoute';
 import { KliqFamilyRoutes } from './routes';
 import { FamilyStackParamList } from './types';
 const Stack = createNativeStackNavigator<FamilyStackParamList>();
 
 export const FamilyNavigator = () => {
+  const initialRoute = useFamilyInitialRoute();
+
+  if (!initialRoute) {
+    return null;
+  }
+
   return (
     <Stack.Navigator
+      initialRouteName={initialRoute}
       screenOptions={{
         header: ({ navigation, options, route }) => (
           <NavigationBar

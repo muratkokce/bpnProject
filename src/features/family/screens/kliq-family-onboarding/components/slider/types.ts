@@ -21,6 +21,7 @@ export interface SliderItem {
 
 export interface SliderProps {
   items: SliderItem[];
+  initialWidth: number;
   onSlideChange?: (index: number) => void;
   onWidthChange?: (width: number) => void;
 }

@@ -1,0 +1,14 @@
+<svg width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="flag-clip"><rect width="21" height="15" rx="3"/></clipPath>
+    <path id="star" d="M0 -0.35L0.08 -0.11H0.33L0.13 0.04L0.2 0.28L0 0.13L-0.2 0.28L-0.13 0.04L-0.33 -0.11H-0.08Z"/>
+    <g id="six-stars"><use href="#star" x="0.7"/><use href="#star" x="2.1"/><use href="#star" x="3.5"/><use href="#star" x="4.9"/><use href="#star" x="6.3"/><use href="#star" x="7.7"/></g>
+    <g id="five-stars"><use href="#star" x="1.4"/><use href="#star" x="2.8"/><use href="#star" x="4.2"/><use href="#star" x="5.6"/><use href="#star" x="7"/></g>
+  </defs>
+  <g clip-path="url(#flag-clip)">
+    <rect width="21" height="15" fill="#B22234"/>
+    <path d="M0 1.154H21V2.308H0ZM0 3.462H21V4.615H0ZM0 5.769H21V6.923H0ZM0 8.077H21V9.231H0ZM0 10.385H21V11.538H0ZM0 12.692H21V13.846H0Z" fill="#FFF"/>
+    <rect width="8.4" height="8.077" fill="#3C3B6E"/>
+    <g fill="#FFF"><use href="#six-stars" y="0.45"/><use href="#five-stars" y="1.35"/><use href="#six-stars" y="2.25"/><use href="#five-stars" y="3.15"/><use href="#six-stars" y="4.05"/><use href="#five-stars" y="4.95"/><use href="#six-stars" y="5.85"/><use href="#five-stars" y="6.75"/><use href="#six-stars" y="7.65"/></g>
+  </g>
+</svg>

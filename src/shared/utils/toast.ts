@@ -7,13 +7,18 @@ interface ShowToastProps {
   type?: ToastType;
   title?: string;
 }
+const ToastTitles: Record<ToastType, string> = {
+  info: 'Bilgi',
+  success: 'Başarılı',
+  error: 'Hata',
+};
 
 export const showToast = ({ message, type = 'info', title }: ShowToastProps) => {
   Toast.show({
     type,
     position: 'top',
-    text1: title || type.charAt(0).toUpperCase() + type.slice(1),
+    text1: title || ToastTitles[type],
     text2: message,
-    visibilityTime: 3000,
+    visibilityTime: 4000,
   });
 };
