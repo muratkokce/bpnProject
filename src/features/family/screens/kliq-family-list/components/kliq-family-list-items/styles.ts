@@ -28,12 +28,12 @@ export const ChildInfoContainer = styled.View`
   })}
 `;
 
-export const AvatarContainer = styled.View`
-  ${({ theme: { colors, normalizeSize } }) => ({
+export const AvatarContainer = styled.View<{ isWaitingApproval: boolean }>`
+  ${({ theme: { colors, normalizeSize }, isWaitingApproval }) => ({
     width: normalizeSize(40),
     height: normalizeSize(40),
     borderRadius: normalizeSize(20),
-    backgroundColor: colors.background.secondary,
+    backgroundColor: isWaitingApproval ? colors.background.gray : colors.background.secondary,
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: normalizeSize(12),

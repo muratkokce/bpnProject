@@ -8,6 +8,7 @@ export const colors = {
   border: '#9095A2',
   background: {
     white: '#FFFFFF',
+    gray: '#BDBFC7',
     purple: '##F9F8FF',
     secondary: '#222B45',
     yellow: '#FADE4B',

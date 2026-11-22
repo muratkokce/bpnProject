@@ -24,6 +24,7 @@ export enum ChildStatus {
   INACTIVE = 'INACTIVE',
   PENDING = 'PENDING',
   BLOCKED = 'BLOCKED',
+  AWAITING_APPROVAL = 'AWAITING_APPROVAL',
 }
 
 export interface Account {

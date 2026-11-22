@@ -4,11 +4,10 @@ import { SvgUri } from 'react-native-svg';
 import KliqMiniIcon from '@/assets/icons/kliq-mini.svg';
 import UserIcon from '@/assets/icons/user.svg';
 import { useTheme } from '@/assets/theme';
-import { Child } from '@/features/family/types/children.types';
+import { Child, ChildStatus } from '@/features/family/types/children.types';
 import { Text } from '@/shared/components/text';
 import { getNameInitials } from '@/shared/utils';
 
-import { ChildStatus } from '../../constants';
 import { AvatarContainer, AvatarStatusContainer } from '../kliq-family-list-items/styles';
 
 interface FamilyAvatarProps {
@@ -35,7 +34,7 @@ const FamilyAvatar = ({ child, style }: FamilyAvatarProps) => {
   };
 
   return (
-    <AvatarContainer style={style}>
+    <AvatarContainer isWaitingApproval={isWaitingApproval} style={style}>
       {renderAvatar()}
       {child.status === ChildStatus.ACTIVE && (
         <AvatarStatusContainer>

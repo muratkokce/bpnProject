@@ -4,20 +4,20 @@ import { KliqFamilyRoutes } from '@/app/navigation/family-navigation/routes';
 import { FamilyScreenProps } from '@/app/navigation/family-navigation/types';
 import InfoIcon from '@/assets/icons/info/info.svg';
 import { useTheme } from '@/assets/theme';
+import { useChildrenStore } from '@/core/store/childrenStore';
 import { useChildrenData } from '@/features/family/screens/hooks/useChildrenStore';
-import type { Child } from '@/features/family/types/children.types';
+import { ChildStatus, type Child } from '@/features/family/types/children.types';
 import { InfoModal } from '@/shared/components/info-modal';
 import { Screen } from '@/shared/components/screen';
 import { Text } from '@/shared/components/text';
 
 import { KliqFamilyListItems } from './components/kliq-family-list-items/KliqFamilyListItems';
-import { ChildStatus } from './constants';
 
 const KliqFamilyListScreen = ({
   navigation,
 }: FamilyScreenProps<typeof KliqFamilyRoutes.KliqFamilyListScreen>) => {
   const { normalizeSize } = useTheme();
-  const { data, isLoading } = useChildrenData();
+  const { data, isLoading } = useChildrenData({ autoFetch: !useChildrenStore.getState().data });
   const [isInfoModalVisible, setIsInfoModalVisible] = useState(false);
 
   const navigateToAddMember = () => navigation.navigate(KliqFamilyRoutes.AddKliqFamilyMemberScreen);

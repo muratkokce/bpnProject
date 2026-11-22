@@ -4,10 +4,9 @@ import { ScrollView } from 'react-native';
 
 import ArrowRightIcon from '@/assets/icons/arrow-right.svg';
 import { useTheme } from '@/assets/theme';
-import type { Child } from '@/features/family/types/children.types';
+import { ChildStatus, type Child } from '@/features/family/types/children.types';
 import { Text } from '@/shared/components/text';
 
-import { ChildStatus } from '../../constants';
 import FamilyAvatar from '../family-avatar/FamilyAvatar';
 
 import {
