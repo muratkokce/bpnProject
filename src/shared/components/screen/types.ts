@@ -10,6 +10,6 @@ export interface ScreenProps extends Omit<ViewProps, 'children'> {
   scrollable?: boolean;
   loadingIndicatorColor?: string;
   buttonContainerStyle?: ViewProps['style'];
-  buttonContainerBackground?: React.ReactNode;
+  showBottomGradient?: boolean;
   contentContainerStyle?: ViewProps['style'];
 }

@@ -9,7 +9,7 @@ export const colors = {
   background: {
     white: '#FFFFFF',
     gray: '#BDBFC7',
-    purple: '##F9F8FF',
+    purple: '#F9F8FF',
     secondary: '#222B45',
     yellow: '#FADE4B',
   },
@@ -18,11 +18,13 @@ export const colors = {
     overlay30: 'rgba(0, 0, 0, 0.3)',
     overlay60: 'rgba(0, 0, 0, 0.6)',
     green08: 'rgba(27, 172, 75, 0.08)',
+    blue08: 'rgba(36, 107, 253, 0.08)',
   },
   text: {
     primary: '#222B45',
     secondary: '#9095A2',
     white: '#FFFFFF',
     gray: '#4E556A',
+    graySecondary: '#646B7D',
   },
 };

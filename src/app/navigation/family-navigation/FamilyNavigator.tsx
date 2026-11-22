@@ -6,6 +6,7 @@ import { NavigationBar } from '@/app/components/NavigationBar';
 import AddKliqFamilyMemberScreen from '@/features/family/screens/add-kliq-family-member/AddKliqFamilyMemberScreen';
 import KliqFamilyListScreen from '@/features/family/screens/kliq-family-list/KliqFamilyListScreen';
 import KliqFamilyListDetailScreen from '@/features/family/screens/kliq-family-list-detail/KliqFamilyListDetailScreen';
+import KliqFamilyMemberTransactionScreen from '@/features/family/screens/kliq-family-member-transaction/KliqFamilyMemberTransactionScreen';
 import KliqFamilyOnboardingScreen from '@/features/family/screens/kliq-family-onboarding/KliqFamilyOnboardingScreen';
 
 import { useFamilyInitialRoute } from './hooks/useFamilyInitialRoute';
@@ -57,6 +58,11 @@ export const FamilyNavigator = () => {
         options={({ route }) => ({
           title: route.params?.child?.fullName || 'Çocuk Detayı',
         })}
+      />
+      <Stack.Screen
+        component={KliqFamilyMemberTransactionScreen}
+        name={KliqFamilyRoutes.KliqFamilyMemberTransactionScreen}
+        options={{ title: 'Hesap Hareketleri' }}
       />
     </Stack.Navigator>
   );

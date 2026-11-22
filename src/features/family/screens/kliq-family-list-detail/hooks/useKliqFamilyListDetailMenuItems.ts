@@ -14,7 +14,7 @@ export const useKliqFamilyListDetailMenuItems = (navigation: Navigation) => {
   const accountAndCardMenuItems: ListItemChildren[] = [
     {
       title: 'Hesap Hareketleri',
-      onPress: () => navigation.navigate(KliqFamilyRoutes.AddKliqFamilyMemberScreen),
+      onPress: () => navigation.navigate(KliqFamilyRoutes.KliqFamilyMemberTransactionScreen),
     },
     {
       title: 'Limit ve Yetki İşlemleri',

@@ -1,19 +1,11 @@
 import React from 'react';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
-
-import { useTheme } from '@/assets/theme';
 
 import { Button } from '../button';
 
-import {
-  ButtonContainer,
-  ButtonGradient,
-  ScreenContainer,
-  ScreenContent,
-  ScreenScrollView,
-} from './styles';
+import { ButtonBackgroundGradient } from './components/ButtonBackgroundGradient';
+import { ButtonContainer, ScreenContainer, ScreenContent, ScreenScrollView } from './styles';
 import { ScreenProps } from './types';
 
 const Screen = React.forwardRef<any, ScreenProps>(
@@ -26,25 +18,26 @@ const Screen = React.forwardRef<any, ScreenProps>(
       scrollable = true,
       loadingIndicatorColor,
       buttonContainerStyle,
-      buttonContainerBackground,
+      showBottomGradient = false,
       contentContainerStyle,
       ...props
     },
     ref
   ) => {
     const insets = useSafeAreaInsets();
-    const { colors } = useTheme();
 
     if (isScreenLoading) {
       return null;
     }
+
+    const hasButtonContainer = primaryButton || footerComponent;
 
     const content = scrollable ? (
       <ScreenScrollView
         contentContainerStyle={[
           {
             flexGrow: 1,
-            paddingBottom: primaryButton ? insets.bottom + 55 : insets.bottom,
+            paddingBottom: hasButtonContainer ? insets.bottom + 55 : insets.bottom,
           },
           contentContainerStyle,
         ]}
@@ -53,7 +46,7 @@ const Screen = React.forwardRef<any, ScreenProps>(
         {children}
       </ScreenScrollView>
     ) : (
-      <ScreenContent hasButton={!!primaryButton} insetBottom={insets.bottom}>
+      <ScreenContent hasButton={!!hasButtonContainer} insetBottom={insets.bottom}>
         {children}
       </ScreenContent>
     );
@@ -62,25 +55,9 @@ const Screen = React.forwardRef<any, ScreenProps>(
       <ScreenContainer insetBottom={insets.bottom} insetTop={insets.top} ref={ref} {...props}>
         {content}
 
-        {(primaryButton || footerComponent) && (
+        {hasButtonContainer ? (
           <ButtonContainer insetBottom={insets.bottom} style={buttonContainerStyle}>
-            <ButtonGradient pointerEvents="none">
-              <Svg height="100%" width="100%">
-                <Defs>
-                  <LinearGradient id="buttonBackgroundGradient" x1="0" x2="0" y1="0" y2="1">
-                    <Stop offset="7.08%" stopColor={colors.background.purple} stopOpacity={0} />
-                    <Stop
-                      offset="26.64%"
-                      stopColor={colors.background.purple}
-                      stopOpacity={0.642071}
-                    />
-                    <Stop offset="65.76%" stopColor={colors.background.purple} stopOpacity={1} />
-                  </LinearGradient>
-                </Defs>
-                <Rect fill="url(#buttonBackgroundGradient)" height="100%" width="100%" />
-              </Svg>
-            </ButtonGradient>
-            {buttonContainerBackground}
+            {showBottomGradient && <ButtonBackgroundGradient />}
             {primaryButton && (
               <Button
                 backgroundColor={primaryButton.backgroundColor}
@@ -93,7 +70,11 @@ const Screen = React.forwardRef<any, ScreenProps>(
             )}
             {footerComponent}
           </ButtonContainer>
-        )}
+        ) : showBottomGradient ? (
+          <ButtonContainer insetBottom={insets.bottom} style={buttonContainerStyle}>
+            <ButtonBackgroundGradient />
+          </ButtonContainer>
+        ) : null}
       </ScreenContainer>
     );
   }

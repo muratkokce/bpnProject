@@ -72,6 +72,7 @@ const KliqFamilyOnboardingScreen = ({
 
   return (
     <Screen
+      showBottomGradient
       isScreenLoading={isLoading}
       primaryButton={{
         text: error ? 'Tekrar Dene' : currentSlide?.ctaText || 'Devam Et',

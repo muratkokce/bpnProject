@@ -24,14 +24,14 @@ export const ScreenScrollView = styled.ScrollView`
 `;
 
 export const ButtonContainer = styled.View<{ insetBottom: number }>`
-  ${({ theme: { normalizeSize }, insetBottom }) => ({
+  ${({ theme: { normalizeSize, colors }, insetBottom }) => ({
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
     paddingHorizontal: normalizeSize(24),
     paddingBottom: insetBottom + normalizeSize(16),
-    backgroundColor: '#F9F8FF',
+    backgroundColor: colors.background.purple,
   })}
 `;
 
