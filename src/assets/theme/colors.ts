@@ -22,5 +22,6 @@ export const colors = {
     primary: '#222B45',
     secondary: '#9095A2',
     white: '#FFFFFF',
+    gray: '#4E556A',
   },
 };

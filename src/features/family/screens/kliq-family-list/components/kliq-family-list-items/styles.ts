@@ -71,3 +71,13 @@ export const EmptyStateContainer = styled.View`
     marginTop: normalizeSize(16),
   })}
 `;
+
+export const AwaitingApprovalStateContainer = styled.View`
+  ${({ theme: { normalizeSize, colors } }) => ({
+    paddingVertical: normalizeSize(2),
+    paddingHorizontal: normalizeSize(4),
+    backgroundColor: colors.disabled,
+    borderRadius: normalizeSize(4),
+    marginHorizontal: normalizeSize(12),
+  })}
+`;

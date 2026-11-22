@@ -7,6 +7,7 @@ import { useTheme } from '@/assets/theme';
 import type { Child } from '@/features/family/types/children.types';
 import { Text } from '@/shared/components/text';
 
+import { ChildStatus } from '../../constants';
 import FamilyAvatar from '../family-avatar/FamilyAvatar';
 
 import {
@@ -15,6 +16,7 @@ import {
   ChildInfoContainer,
   ChildDetailsContainer,
   EmptyStateContainer,
+  AwaitingApprovalStateContainer,
 } from './styles';
 
 interface KliqFamilyListItemsProps {
@@ -43,7 +45,6 @@ export const KliqFamilyListItems: React.FC<KliqFamilyListItemsProps> = ({
           <ItemCard key={child.id} onPress={() => onChildPress?.(child)}>
             <ChildInfoContainer>
               <FamilyAvatar child={child} />
-
               <ChildDetailsContainer>
                 <Text numberOfLines={1} variant="bodyBold">
                   {child.fullName}
@@ -51,7 +52,13 @@ export const KliqFamilyListItems: React.FC<KliqFamilyListItemsProps> = ({
                 <Text variant="captionSmall">{child.account?.formattedBalance || '0,00 TL'}</Text>
               </ChildDetailsContainer>
             </ChildInfoContainer>
-
+            {child.status === ChildStatus.AWAITING_APPROVAL && (
+              <AwaitingApprovalStateContainer>
+                <Text color={colors.text.gray} variant="captionSmallBold">
+                  Onay Bekliyor
+                </Text>
+              </AwaitingApprovalStateContainer>
+            )}
             <ArrowRightIcon
               color={colors.secondary}
               height={normalizeSize(24)}

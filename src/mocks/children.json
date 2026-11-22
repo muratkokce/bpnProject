@@ -59,6 +59,33 @@
           "dailyLimit": 500.0
         }
       }
+    },
+    {
+      "id": "chd_106",
+      "fullName": "Ali Veli Yılmaz",
+      "maskedIdentityNumber": "456*****234",
+      "birthDate": "2015-09-22",
+      "age": 11,
+      "avatarUrl": "",
+      "status": "AWAITING_APPROVAL",
+      "addedAt": "2026-06-18T14:15:00Z",
+      "account": {
+        "accountNumber": "1042-9920169",
+        "iban": "TR813306200104200009920144",
+        "branchName": "Kadıköy Şubesi",
+        "currency": "TRY",
+        "balance": 111.0,
+        "formattedBalance": "111,00 TL",
+        "availableBalance": 111.0,
+        "blockedAmount": 0.0,
+        "card": {
+          "cardId": "crd_5502",
+          "maskedCardNumber": "5400 **** **** 9032",
+          "cardType": "PREPAID_YOUTH",
+          "cardStatus": "ACTIVE",
+          "dailyLimit": 500.0
+        }
+      }
     }
   ],
   "availableToAddChildren": [

@@ -2,6 +2,7 @@ import { ViewProps } from 'react-native';
 import { SvgUri } from 'react-native-svg';
 
 import KliqMiniIcon from '@/assets/icons/kliq-mini.svg';
+import UserIcon from '@/assets/icons/user.svg';
 import { useTheme } from '@/assets/theme';
 import { Child } from '@/features/family/types/children.types';
 import { Text } from '@/shared/components/text';
@@ -17,16 +18,25 @@ interface FamilyAvatarProps {
 
 const FamilyAvatar = ({ child, style }: FamilyAvatarProps) => {
   const { colors, normalizeSize } = useTheme();
+  const isWaitingApproval = child.status === ChildStatus.AWAITING_APPROVAL;
+
+  const renderAvatar = () => {
+    if (isWaitingApproval) {
+      return <UserIcon height={normalizeSize(24)} width={normalizeSize(24)} />;
+    }
+    if (child.avatarUrl) {
+      return <SvgUri height={normalizeSize(40)} uri={child.avatarUrl} width={normalizeSize(40)} />;
+    }
+    return (
+      <Text color={colors.text.white} variant="bodyBold">
+        {getNameInitials(child.fullName)}
+      </Text>
+    );
+  };
 
   return (
     <AvatarContainer style={style}>
-      {child.avatarUrl ? (
-        <SvgUri height={normalizeSize(40)} uri={child.avatarUrl} width={normalizeSize(40)} />
-      ) : (
-        <Text color={colors.text.white} variant="bodyBold">
-          {getNameInitials(child.fullName)}
-        </Text>
-      )}
+      {renderAvatar()}
       {child.status === ChildStatus.ACTIVE && (
         <AvatarStatusContainer>
           <KliqMiniIcon height={normalizeSize(7)} width={normalizeSize(6)} />

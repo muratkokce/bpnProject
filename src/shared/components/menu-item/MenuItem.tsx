@@ -16,7 +16,7 @@ const MenuItem = ({ icon, title, onPress, isNewMenu = false }: MenuItemProps) =>
     </MenuItemContent>
     {isNewMenu && (
       <NewBadge>
-        <Text color="text.primary" variant="captionSmallBoldCenter">
+        <Text color="text.primary" variant="captionSmallBold">
           Yeni
         </Text>
       </NewBadge>

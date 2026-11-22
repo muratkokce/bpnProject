@@ -10,5 +10,5 @@ export const TEXT_VARIANTS = {
   captionBold: { fontSize: 12, fontWeight: '700', lineHeight: 14.4, letterSpacing: 0.2 },
   captionRegular: { fontSize: 12, fontWeight: '400', lineHeight: 14.4, letterSpacing: 0.2 },
   captionSmall: { fontSize: 10, fontWeight: '400', lineHeight: 12, letterSpacing: 0.2 },
-  captionSmallBoldCenter: { fontSize: 10, fontWeight: '700', lineHeight: 12, letterSpacing: 0.2 },
+  captionSmallBold: { fontSize: 10, fontWeight: '700', lineHeight: 12, letterSpacing: 0.2 },
 } as const;

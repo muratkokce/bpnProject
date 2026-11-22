@@ -38,7 +38,9 @@ const InfoModal = React.forwardRef<any, InfoModalProps>(
               <Text style={{ marginBottom: normalizeSize(24) }} variant="titleMedium">
                 {title}
               </Text>
-              <Text variant="bodyMediumRegular">{description}</Text>
+              <Text textAlign="center" variant="bodyMediumRegular">
+                {description}
+              </Text>
             </ContentContainer>
             <ButtonsContainer>
               <Button
