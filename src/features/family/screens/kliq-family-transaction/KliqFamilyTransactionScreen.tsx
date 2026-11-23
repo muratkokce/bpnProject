@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { KliqFamilyRoutes } from '@/app/navigation/family-navigation/routes';
+import { FamilyScreenProps } from '@/app/navigation/family-navigation/types';
 import EmptyIcon from '@/assets/icons/info/empty.svg';
 import { useTheme } from '@/assets/theme';
 import { InfoCard } from '@/shared/components/info-card';
@@ -8,12 +10,15 @@ import { TransactionList } from '@/shared/components/transaction-list-item';
 
 import { useFamilyMemberTransaction } from '../hooks/useFamilyMemberTransaction';
 
-const KliqFamilyTransactionScreen = (): React.JSX.Element => {
+const KliqFamilyTransactionScreen = ({
+  route,
+}: FamilyScreenProps<typeof KliqFamilyRoutes.KliqFamilyTransactionScreen>) => {
+  const { child } = route.params;
+
   const { normalizeSize } = useTheme();
   const { data, isLoading } = useFamilyMemberTransaction();
 
-  const transactions =
-    data?.transactionsByChild[Object.keys(data?.transactionsByChild || {})[0]]?.items || [];
+  const transactions = data?.transactionsByChild[child.id]?.items || [];
 
   return (
     <Screen showBottomGradient isScreenLoading={isLoading}>
@@ -21,7 +26,7 @@ const KliqFamilyTransactionScreen = (): React.JSX.Element => {
         <TransactionList transactions={transactions} />
       ) : (
         <InfoCard
-          description="Seçilen tarih ve işlem türüne ait işlemin bulunmuyor." //filtre yoksa metni değiştir
+          description="Şu anda gösterilecek bir işlemin bulunmuyor." //filtre yapıldıysa metni değiştir
           icon={<EmptyIcon height={normalizeSize(128)} width={normalizeSize(187)} />}
           text="İşlem Bulunamadı"
         />

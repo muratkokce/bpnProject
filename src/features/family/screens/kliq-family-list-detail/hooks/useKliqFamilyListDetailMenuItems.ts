@@ -1,5 +1,6 @@
 import { KliqFamilyRoutes } from '@/app/navigation/family-navigation/routes';
 import { FamilyScreenProps } from '@/app/navigation/family-navigation/types';
+import { Child } from '@/features/family/types/children.types';
 import type { ListItemChildren } from '@/shared/components/list-item/types';
 import { showToast } from '@/shared/utils';
 
@@ -7,14 +8,14 @@ type Navigation = FamilyScreenProps<
   typeof KliqFamilyRoutes.KliqFamilyListDetailScreen
 >['navigation'];
 
-export const useKliqFamilyListDetailMenuItems = (navigation: Navigation) => {
+export const useKliqFamilyListDetailMenuItems = (child: Child, navigation: Navigation) => {
   const showUnavailableAlert = (title: string) => () =>
     showToast({ message: 'Bu işlem henüz kullanılamıyor.', type: 'info', title });
 
   const accountAndCardMenuItems: ListItemChildren[] = [
     {
       title: 'Hesap Hareketleri',
-      onPress: () => navigation.navigate(KliqFamilyRoutes.KliqFamilyTransactionScreen),
+      onPress: () => navigation.navigate(KliqFamilyRoutes.KliqFamilyTransactionScreen, { child }),
     },
     {
       title: 'Limit ve Yetki İşlemleri',

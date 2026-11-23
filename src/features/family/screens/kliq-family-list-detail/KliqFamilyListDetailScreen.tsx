@@ -20,8 +20,10 @@ const KliqFamilyListDetailScreen = ({
 }: FamilyScreenProps<typeof KliqFamilyRoutes.KliqFamilyListDetailScreen>) => {
   const { child } = route.params;
   const { normalizeSize, colors } = useTheme();
-  const { accountAndCardMenuItems, financialSettingsMenuItems } =
-    useKliqFamilyListDetailMenuItems(navigation);
+  const { accountAndCardMenuItems, financialSettingsMenuItems } = useKliqFamilyListDetailMenuItems(
+    child,
+    navigation
+  );
 
   const showUnavailableAlert = (title: string) => () =>
     showToast({ message: 'Bu işlem henüz kullanılamıyor.', type: 'info', title });

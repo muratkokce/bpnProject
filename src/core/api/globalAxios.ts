@@ -1,7 +1,10 @@
 import { API_BASE_URL } from '@env';
-import axios, { InternalAxiosRequestConfig } from 'axios';
+import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 
 import { useLoadingStore } from '@/core/store';
+import { showToast } from '@/shared/utils';
+
+import { getErrorMessage } from '../utils';
 
 export const globalAxios = axios.create({
   baseURL: API_BASE_URL,
@@ -42,8 +45,9 @@ globalAxios.interceptors.response.use(
     finishRequest(response.config);
     return response;
   },
-  (error) => {
+  (error: AxiosError<{ message?: string; error?: string }>) => {
     finishRequest(error?.config);
+    showToast({ type: 'error', message: getErrorMessage(error) });
     return Promise.reject(error);
   }
 );

@@ -10,7 +10,7 @@ export type FamilyStackParamList = {
   [KliqFamilyRoutes.KliqFamilyListScreen]: undefined;
   [KliqFamilyRoutes.AddKliqFamilyMemberScreen]: undefined;
   [KliqFamilyRoutes.KliqFamilyListDetailScreen]: { child: Child };
-  [KliqFamilyRoutes.KliqFamilyTransactionScreen]: undefined;
+  [KliqFamilyRoutes.KliqFamilyTransactionScreen]: { child: Child };
   [KliqFamilyRoutes.KliqFamilyTransactionDetailScreen]: { transaction: Transaction };
 };
 
