@@ -14,6 +14,7 @@ const Screen = React.forwardRef<any, ScreenProps>(
       children,
       isScreenLoading = false,
       primaryButton,
+      secondaryButton,
       footerComponent,
       scrollable = true,
       loadingIndicatorColor,
@@ -30,7 +31,7 @@ const Screen = React.forwardRef<any, ScreenProps>(
       return null;
     }
 
-    const hasButtonContainer = primaryButton || footerComponent;
+    const hasButtonContainer = primaryButton || secondaryButton || footerComponent;
 
     const content = scrollable ? (
       <ScreenScrollView
@@ -66,6 +67,16 @@ const Screen = React.forwardRef<any, ScreenProps>(
                 text={primaryButton.text}
                 textColor={primaryButton.textColor}
                 variant={primaryButton.variant}
+              />
+            )}
+            {secondaryButton && (
+              <Button
+                backgroundColor={secondaryButton.backgroundColor}
+                disabled={secondaryButton.disabled}
+                onPress={secondaryButton.onPress}
+                text={secondaryButton.text}
+                textColor={secondaryButton.textColor}
+                variant={secondaryButton.variant || 'secondary'}
               />
             )}
             {footerComponent}

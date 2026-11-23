@@ -19,6 +19,7 @@ export const colors = {
     overlay60: 'rgba(0, 0, 0, 0.6)',
     green08: 'rgba(27, 172, 75, 0.08)',
     blue08: 'rgba(36, 107, 253, 0.08)',
+    red08: 'rgba(255, 90, 95, 0.08)',
   },
   text: {
     primary: '#222B45',

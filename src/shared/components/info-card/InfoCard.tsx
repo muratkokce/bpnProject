@@ -9,10 +9,7 @@ import { InfoCardProps } from './types';
 
 const InfoCard = React.memo(
   React.forwardRef<any, InfoCardProps>(
-    (
-      { icon, text, description, textColor, descriptionColor, backgroundColor, ...props },
-      ref
-    ) => {
+    ({ icon, text, description, textColor, descriptionColor, backgroundColor, ...props }, ref) => {
       const { colors } = useTheme();
 
       return (

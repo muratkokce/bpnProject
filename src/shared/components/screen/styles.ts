@@ -32,6 +32,16 @@ export const ButtonContainer = styled.View<{ insetBottom: number }>`
     paddingHorizontal: normalizeSize(24),
     paddingBottom: insetBottom + normalizeSize(16),
     backgroundColor: colors.background.purple,
+    gap: normalizeSize(12),
+  })}
+`;
+
+export const FooterIconsContainer = styled.View`
+  ${({ theme: { normalizeSize } }) => ({
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: normalizeSize(12),
   })}
 `;
 

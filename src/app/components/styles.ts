@@ -38,6 +38,13 @@ export const BackButton = styled.Pressable`
   })}
 `;
 
+export const HomeButton = styled.Pressable`
+  ${({ theme: { normalizeSize } }) => ({
+    width: normalizeSize(24),
+    height: normalizeSize(24),
+  })}
+`;
+
 export const TitleContainer = styled.View<{ marginLeft: number }>`
   ${({ theme: { normalizeSize }, marginLeft }) => ({
     flex: 1,

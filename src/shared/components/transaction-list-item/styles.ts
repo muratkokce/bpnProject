@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.Pressable`
   ${({ theme: { colors, normalizeSize } }) => ({
     backgroundColor: colors.background.white,
     borderRadius: normalizeSize(16),
