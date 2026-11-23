@@ -43,6 +43,20 @@ export const useAddKliqFamilyMember = (
     });
   };
 
+  const navigateToLimitAuthority = () => {
+    const { data: childrenData } = useChildrenStore.getState();
+    const child = childrenData?.registeredChildren.find(
+      (registered) => registered.id === matchedChild?.id
+    );
+
+    if (!child) {
+      navigateToAccountsTab();
+      return;
+    }
+
+    navigation.replace(KliqFamilyRoutes.KliqFamilyLimitAuthorityScreen, { child });
+  };
+
   const navigateToBack = () => {
     navigation.popTo(KliqFamilyRoutes.KliqFamilyListScreen);
   };
@@ -108,7 +122,7 @@ export const useAddKliqFamilyMember = (
 
     if (matchedChild?.expectedModal.type === 'SUCCESS') {
       if (matchedChild?.expectedModal.secondaryButtonText) {
-        navigateToAccountsTab();
+        navigateToLimitAuthority();
       }
     } else {
       if (matchedChild?.expectedModal.secondaryButtonText) {
