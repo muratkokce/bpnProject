@@ -93,7 +93,7 @@ const KliqFamilyLimitAuthorityScreen = ({
   };
 
   return (
-    <Screen isScreenLoading={isLoading}>
+    <Screen isScreenLoading={isLoading} style={{ paddingBottom: 0 }}>
       {tabs.length > 0 ? (
         <Tabs
           footer={

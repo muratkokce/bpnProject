@@ -1,14 +1,12 @@
-import React, { useEffect, useImperativeHandle, useMemo, useState } from 'react';
+import React from 'react';
 
 import { FlatList } from 'react-native';
 
 import { useTheme } from '@/assets/theme';
-import { useFamilyLimitAuthorityStore } from '@/core/store';
-import type { Permission, Tab } from '@/features/family/types/limitAuthority.types';
+import type { Tab } from '@/features/family/types/limitAuthority.types';
 import { InfoModal } from '@/shared/components/info-modal';
 import { Text } from '@/shared/components/text';
 import { Toggle } from '@/shared/components/toggle';
-import { showToast, ToastType } from '@/shared/utils';
 
 import {
   ContentColumn,
@@ -19,9 +17,10 @@ import {
   PermissionsContentContainer,
 } from '../styles';
 
-export interface PermissionsBaseHandle {
-  requestSave: () => void;
-}
+import { usePermissionsBase } from './hooks';
+import type { PermissionsBaseHandle } from './hooks';
+
+export type { PermissionsBaseHandle } from './hooks';
 
 interface PermissionsBaseProps {
   tab?: Tab;
@@ -39,99 +38,23 @@ export const PermissionsBase: React.FC<PermissionsBaseProps> = ({
   ref,
 }) => {
   const { colors, normalizeSize } = useTheme();
-  const { updateTabPermissions } = useFamilyLimitAuthorityStore();
-  const notifications = useFamilyLimitAuthorityStore(
-    (state) => state.data?.permissionsByChild[childId ?? '']?.notifications
-  );
-  const [isSaveModalVisible, setIsSaveModalVisible] = useState(false);
-  const [masterEnabled, setMasterEnabled] = useState(tab?.masterToggle.isEnabled ?? false);
-  const [permissionsState, setPermissionsState] = useState(
-    tab?.permissions.reduce((acc, perm) => {
-      acc[perm.id] = perm.isEnabled;
-      return acc;
-    }, {} as Record<string, boolean>) ?? {}
-  );
-
-  const [pendingPermission, setPendingPermission] = useState<Permission | null>(null);
-
-  const hasChanges = useMemo(() => {
-    if (!tab) return false;
-
-    const masterChanged = masterEnabled !== tab.masterToggle.isEnabled;
-    const permissionsChanged = Object.entries(permissionsState).some(
-      ([permId, isEnabled]) => isEnabled !== tab.permissions.find((p) => p.id === permId)?.isEnabled
-    );
-
-    return masterChanged || permissionsChanged;
-  }, [masterEnabled, permissionsState, tab]);
-
-  useImperativeHandle(ref, () => ({ requestSave: () => setIsSaveModalVisible(true) }), []);
-
-  useEffect(() => {
-    onHasChangesChange?.(hasChanges);
-  }, [hasChanges, onHasChangesChange]);
+  const {
+    notifications,
+    isSaveModalVisible,
+    setIsSaveModalVisible,
+    masterEnabled,
+    permissionsState,
+    pendingPermission,
+    setPendingPermission,
+    handleMasterToggleChange,
+    handlePermissionToggle,
+    handleConfirmPendingPermission,
+    handleConfirmSave,
+  } = usePermissionsBase({ tab, childId, onHasChangesChange, onSaved, ref });
 
   if (!tab || !childId) {
     return null;
   }
-
-  const handleMasterToggleChange = (value: boolean) => {
-    setMasterEnabled(value);
-    if (!value) {
-      setPermissionsState((prev) => {
-        const updated = { ...prev };
-        Object.keys(updated).forEach((key) => {
-          updated[key] = false;
-        });
-        return updated;
-      });
-    }
-  };
-
-  const applyPermissionChange = (permissionId: string, value: boolean) => {
-    setPermissionsState((prev) => {
-      const updated = { ...prev, [permissionId]: value };
-
-      if (value && !masterEnabled) {
-        setMasterEnabled(true);
-      }
-      if (!value && Object.values(updated).every((perm) => !perm)) {
-        setMasterEnabled(false);
-      }
-      return updated;
-    });
-  };
-
-  const handlePermissionToggle = (permission: Permission, value: boolean) => {
-    if (value && permission.requiresConfirmationOnEnable) {
-      setPendingPermission(permission);
-      return;
-    }
-    applyPermissionChange(permission.id, value);
-  };
-
-  const handleConfirmPendingPermission = () => {
-    if (pendingPermission) {
-      applyPermissionChange(pendingPermission.id, true);
-    }
-    setPendingPermission(null);
-  };
-
-  const handleConfirmSave = () => {
-    setIsSaveModalVisible(false);
-    updateTabPermissions(childId, tab.tabId, masterEnabled, permissionsState);
-
-    const successToast = notifications?.saveSuccessToast;
-    if (successToast) {
-      showToast({
-        title: successToast.title,
-        message: successToast.message,
-        type: successToast.type.toLowerCase() as ToastType,
-      });
-    }
-
-    onSaved?.();
-  };
 
   return (
     <PermissionsContainer>
