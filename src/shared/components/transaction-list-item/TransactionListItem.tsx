@@ -48,7 +48,7 @@ const TransactionListItem: React.FC<TransactionListItemProps> = ({
           <Text color={colors.text.graySecondary} numberOfLines={1} variant="captionRegular">
             {typeLabel}
           </Text>
-          <Text numberOfLines={1}>{transaction.title}</Text>
+          <Text numberOfLines={2}>{transaction.title}</Text>
         </LeftContent>
         {isVisibleRightContent && (
           <RightContent>
