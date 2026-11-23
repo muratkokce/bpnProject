@@ -18,7 +18,8 @@ const KliqFamilyTransactionScreen = ({
   const { normalizeSize } = useTheme();
   const { data, isLoading } = useFamilyMemberTransaction();
 
-  const transactions = data?.transactionsByChild[child.id]?.items || [];
+  const selectedChild = data?.transactionsByChild[child.id];
+  const transactions = selectedChild?.items || [];
 
   return (
     <Screen showBottomGradient isScreenLoading={isLoading}>
@@ -26,9 +27,9 @@ const KliqFamilyTransactionScreen = ({
         <TransactionList transactions={transactions} />
       ) : (
         <InfoCard
-          description="Şu anda gösterilecek bir işlemin bulunmuyor." //filtre yapıldıysa metni değiştir
+          description={selectedChild?.emptyState?.description ?? 'Şu anda işlem bulunmamaktadır.'} //filtre yapıldıysa metni değiştir
           icon={<EmptyIcon height={normalizeSize(128)} width={normalizeSize(187)} />}
-          text="İşlem Bulunamadı"
+          text={selectedChild?.emptyState?.title ?? 'İşlem Bulunamadı'}
         />
       )}
     </Screen>

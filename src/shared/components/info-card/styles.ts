@@ -4,7 +4,7 @@ export const InfoCardContainer = styled.View<{
   backgroundColor?: string;
 }>`
   ${({ theme: { normalizeSize, colors }, backgroundColor }) => ({
-    paddingHorizontal: normalizeSize(59),
+    paddingHorizontal: normalizeSize(48),
     paddingVertical: normalizeSize(55),
     backgroundColor: backgroundColor || colors.background.white,
     borderRadius: normalizeSize(16),
