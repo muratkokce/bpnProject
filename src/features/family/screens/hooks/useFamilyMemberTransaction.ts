@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { useChildrenStore } from '@/core/store/childrenStore';
+
 import { familyMemberTransactionService } from '../../services/familyMemberTransactionService';
-import type { FamilyMemberTransactionsResponse } from '../../types/transaction.types';
 
 export const useFamilyMemberTransaction = () => {
   const { setLoading, setError } = useChildrenStore();

@@ -14,6 +14,7 @@ const Button = React.forwardRef<any, ButtonProps>(
       textVariant = 'titleSmall',
       paddingVertical = 17,
       borderRadius = 12,
+      borderColor,
       textProps,
       variant = 'primary',
       ...props
@@ -22,6 +23,7 @@ const Button = React.forwardRef<any, ButtonProps>(
   ) => {
     return (
       <ButtonContainer
+        borderColor={borderColor}
         borderRadius={borderRadius}
         disabled={disabled}
         paddingVertical={paddingVertical}

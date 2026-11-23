@@ -4,7 +4,7 @@ import { useChildrenStore } from '@/core/store/childrenStore';
 
 import { childrenService } from '../../services/childrenService';
 
-export const useChildrenData = ({ autoFetch = true }: { autoFetch?: boolean } = {}) => {
+export const useChildren = ({ autoFetch = true }: { autoFetch?: boolean } = {}) => {
   const { data: storeData, setData, setError } = useChildrenStore();
 
   return useQuery({

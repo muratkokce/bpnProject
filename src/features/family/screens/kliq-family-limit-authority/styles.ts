@@ -6,6 +6,5 @@ interface DetailContainerProps {
 
 export const DetailContainer = styled.View<DetailContainerProps>`
   flex: 1;
-  padding-horizontal: 16px;
   padding-bottom: ${(props) => props.insetBottom + 16}px;
 `;

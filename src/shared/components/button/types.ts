@@ -8,6 +8,7 @@ export interface ButtonProps extends Omit<PressableProps, 'children'> {
   disabled?: boolean;
   backgroundColor?: string;
   textColor?: string;
+  borderColor?: string;
   textVariant?: TextVariant;
   fontSize?: number;
   paddingVertical?: number;
@@ -19,5 +20,5 @@ export interface ButtonProps extends Omit<PressableProps, 'children'> {
 export interface ButtonContainerProps
   extends Pick<
     ButtonProps,
-    'backgroundColor' | 'disabled' | 'paddingVertical' | 'borderRadius' | 'variant'
+    'backgroundColor' | 'disabled' | 'paddingVertical' | 'borderRadius' | 'variant' | 'borderColor'
   > {}

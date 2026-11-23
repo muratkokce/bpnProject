@@ -35,6 +35,7 @@ const KliqFamilyListDetailScreen = ({
         onPress: showUnavailableAlert('Hesabı Kapat'),
         variant: 'secondary',
         textColor: colors.error,
+        borderColor: colors.error,
       }}
       style={{ paddingBottom: 0 }}
     >

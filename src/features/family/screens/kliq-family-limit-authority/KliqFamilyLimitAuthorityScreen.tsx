@@ -6,12 +6,14 @@ import { KliqFamilyRoutes } from '@/app/navigation/family-navigation/routes';
 import { FamilyScreenProps } from '@/app/navigation/family-navigation/types';
 import EmptyIcon from '@/assets/icons/info/empty.svg';
 import { useTheme } from '@/assets/theme';
+import { useFamilyLimitAuthorityStore } from '@/core/store';
 import { InfoCard } from '@/shared/components/info-card';
 import { Screen } from '@/shared/components/screen';
+import { Tabs, TabsItem } from '@/shared/components/tabs';
 
 import { useFamilyLimitAuthority } from '../hooks/useFamilyLimitAuthority';
 
-import { LimitAuthorityList } from './components/limit-authority-list';
+import { AccountPermissions, CardPermissions } from './components';
 import { DetailContainer } from './styles';
 
 const KliqFamilyLimitAuthorityScreen = ({
@@ -21,16 +23,33 @@ const KliqFamilyLimitAuthorityScreen = ({
   const { normalizeSize } = useTheme();
   const insets = useSafeAreaInsets();
 
-  const { data, isLoading } = useFamilyLimitAuthority();
+  const { data: storeData, isLoading } = useFamilyLimitAuthorityStore();
+  useFamilyLimitAuthority({ autoFetch: !storeData });
 
-  const limitAuthority = data?.permissionsByChild[child.id];
+  const limitAuthority = storeData?.permissionsByChild[child.id];
   const tabs = limitAuthority?.tabs || [];
+
+  const accountTab = tabs.find((tab) => tab.tabId === 'ACCOUNT_PERMISSIONS');
+  const cardTab = tabs.find((tab) => tab.tabId === 'CARD_PERMISSIONS');
+
+  const tabItems: TabsItem[] = [
+    {
+      tabId: 'account-permissions',
+      title: accountTab?.tabTitle ?? 'Hesap Yetkileri',
+      content: <AccountPermissions childId={child.id} tab={accountTab} />,
+    },
+    {
+      tabId: 'card-permissions',
+      title: cardTab?.tabTitle ?? 'Kart Yetkileri',
+      content: <CardPermissions childId={child.id} tab={cardTab} />,
+    },
+  ];
 
   return (
     <Screen isScreenLoading={isLoading}>
       <DetailContainer insetBottom={insets.bottom}>
         {tabs.length > 0 ? (
-          <LimitAuthorityList items={tabs} />
+          <Tabs items={tabItems} />
         ) : (
           <InfoCard
             description="Bu çocuk için limit ve yetki işlemi bulunmuyor."

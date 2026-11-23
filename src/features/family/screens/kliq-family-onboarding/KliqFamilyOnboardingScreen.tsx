@@ -15,7 +15,7 @@ import { Text } from '@/shared/components/text';
 import { showToast } from '@/shared/utils';
 import { FAMILY_ONBOARDING_COMPLETED_KEY } from '@/storage';
 
-import { useChildrenData } from '../hooks/useChildrenStore';
+import { useChildren } from '../hooks/useChildren';
 import { useKliqFamilyOnboarding } from '../hooks/useKliqFamilyOnboarding';
 
 import { mapOnboardingItems } from './constants';
@@ -31,7 +31,7 @@ const KliqFamilyOnboardingScreen = ({
   const [sliderWidth, setSliderWidth] = useState(initialSliderWidth);
   const sliderRef = useRef<React.ComponentRef<typeof ScrollView>>(null);
   const { data, error, isLoading, refetch } = useKliqFamilyOnboarding();
-  const { refetch: refetchChildren } = useChildrenData();
+  const { refetch: refetchChildren } = useChildren();
   const items = mapOnboardingItems(data || []);
 
   const isLastSlide = activeSlideIndex === items.length - 1;

@@ -5,7 +5,7 @@ import { FamilyScreenProps } from '@/app/navigation/family-navigation/types';
 import InfoIcon from '@/assets/icons/info/info.svg';
 import { useTheme } from '@/assets/theme';
 import { useChildrenStore } from '@/core/store/childrenStore';
-import { useChildrenData } from '@/features/family/screens/hooks/useChildrenStore';
+import { useChildren } from '@/features/family/screens/hooks/useChildren';
 import { ChildStatus, type Child } from '@/features/family/types/children.types';
 import { InfoModal } from '@/shared/components/info-modal';
 import { Screen } from '@/shared/components/screen';
@@ -18,7 +18,7 @@ const KliqFamilyListScreen = ({
 }: FamilyScreenProps<typeof KliqFamilyRoutes.KliqFamilyListScreen>) => {
   const { normalizeSize } = useTheme();
   const { data: storeData, isLoading } = useChildrenStore();
-  useChildrenData({ autoFetch: !storeData });
+  useChildren({ autoFetch: !storeData });
   const [isInfoModalVisible, setIsInfoModalVisible] = useState(false);
 
   const children = storeData?.registeredChildren || [];

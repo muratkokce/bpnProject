@@ -10,6 +10,7 @@ export const ButtonContainer = styled.Pressable<ButtonContainerProps>`
     backgroundColor = variant === 'primary' ? colors.primary500 : colors.background.white,
     paddingVertical,
     borderRadius = 12,
+    borderColor,
   }) => ({
     width: '100%',
     paddingVertical: normalizeSize(paddingVertical || 14),
@@ -20,6 +21,7 @@ export const ButtonContainer = styled.Pressable<ButtonContainerProps>`
     alignItems: 'center',
     opacity: disabled ? 0.5 : 1,
     borderWidth: variant === 'secondary' ? 1 : 0,
-    borderColor: variant === 'secondary' ? colors.background.secondary : 'transparent',
+    borderColor:
+      borderColor || (variant === 'secondary' ? colors.background.secondary : 'transparent'),
   })}
 `;

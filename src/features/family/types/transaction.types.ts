@@ -48,13 +48,3 @@ export interface FamilyMemberTransactionsResponse {
     [childId: string]: FamilyMemberTransactionData;
   };
 }
-
-export interface FamilyMemberTransactionState {
-  data: FamilyMemberTransactionsResponse | null;
-  isLoading: boolean;
-  error: Error | null;
-  setData: (data: FamilyMemberTransactionsResponse) => void;
-  setLoading: (isLoading: boolean) => void;
-  setError: (error: Error | null) => void;
-  reset: () => void;
-}

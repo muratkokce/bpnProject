@@ -62,6 +62,7 @@ const Screen = React.forwardRef<any, ScreenProps>(
             {primaryButton && (
               <Button
                 backgroundColor={primaryButton.backgroundColor}
+                borderColor={primaryButton.borderColor}
                 disabled={primaryButton.disabled}
                 onPress={primaryButton.onPress}
                 text={primaryButton.text}
@@ -72,6 +73,7 @@ const Screen = React.forwardRef<any, ScreenProps>(
             {secondaryButton && (
               <Button
                 backgroundColor={secondaryButton.backgroundColor}
+                borderColor={secondaryButton.borderColor}
                 disabled={secondaryButton.disabled}
                 onPress={secondaryButton.onPress}
                 text={secondaryButton.text}

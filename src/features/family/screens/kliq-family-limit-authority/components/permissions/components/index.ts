@@ -1,0 +1,1 @@
+export { PermissionsBase } from './PermissionsBase';
