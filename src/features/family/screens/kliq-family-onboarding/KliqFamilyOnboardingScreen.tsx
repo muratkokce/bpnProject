@@ -29,18 +29,17 @@ const KliqFamilyOnboardingScreen = ({
   const initialSliderWidth = Math.max(0, windowWidth - normalizeSize(48));
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [sliderWidth, setSliderWidth] = useState(initialSliderWidth);
-  const [attempt, setAttempt] = useState(0);
   const sliderRef = useRef<React.ComponentRef<typeof ScrollView>>(null);
-  const { data, error, isLoading } = useKliqFamilyOnboarding(attempt);
-  const { fetchData: fetchChildren } = useChildrenData({ autoFetch: false });
-  const items = mapOnboardingItems(data);
+  const { data, error, isLoading, refetch } = useKliqFamilyOnboarding();
+  const { refetch: refetchChildren } = useChildrenData();
+  const items = mapOnboardingItems(data || []);
 
   const isLastSlide = activeSlideIndex === items.length - 1;
   const currentSlide = items[activeSlideIndex];
 
   const handleButtonPress = async () => {
     if (error) {
-      setAttempt((previousAttempt) => previousAttempt + 1);
+      refetch();
       return;
     }
     if (!currentSlide) {
@@ -48,9 +47,10 @@ const KliqFamilyOnboardingScreen = ({
     }
     if (isLastSlide) {
       try {
-        const childrenData = await fetchChildren();
+        const result = await refetchChildren();
+        const children = result.data?.registeredChildren || [];
         const destination =
-          childrenData.registeredChildren?.length > 0
+          children.length > 0
             ? KliqFamilyRoutes.KliqFamilyListScreen
             : KliqFamilyRoutes.AddKliqFamilyMemberScreen;
 

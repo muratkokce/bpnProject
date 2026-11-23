@@ -12,6 +12,7 @@ export type FamilyStackParamList = {
   [KliqFamilyRoutes.KliqFamilyListDetailScreen]: { child: Child };
   [KliqFamilyRoutes.KliqFamilyTransactionScreen]: { child: Child };
   [KliqFamilyRoutes.KliqFamilyTransactionDetailScreen]: { transaction: Transaction };
+  [KliqFamilyRoutes.KliqFamilyLimitAuthorityScreen]: { child: Child };
 };
 
 export type FamilyScreenProps<Screen extends keyof FamilyStackParamList> = NativeStackScreenProps<

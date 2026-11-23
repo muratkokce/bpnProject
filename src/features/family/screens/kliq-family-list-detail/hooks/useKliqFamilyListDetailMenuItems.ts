@@ -19,7 +19,8 @@ export const useKliqFamilyListDetailMenuItems = (child: Child, navigation: Navig
     },
     {
       title: 'Limit ve Yetki İşlemleri',
-      onPress: showUnavailableAlert('Limit ve Yetki İşlemleri'),
+      onPress: () =>
+        navigation.navigate(KliqFamilyRoutes.KliqFamilyLimitAuthorityScreen, { child }),
     },
 
     {

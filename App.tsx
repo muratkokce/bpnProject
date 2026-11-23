@@ -1,4 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { StatusBar, useColorScheme } from 'react-native';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
@@ -8,6 +9,8 @@ import { Loading } from '@/shared/components/loading';
 
 import { RootNavigator } from './src/app/navigation';
 import { useTheme } from './src/assets/theme';
+
+const queryClient = new QueryClient();
 
 function ThemedApp() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -30,9 +33,11 @@ function ThemedApp() {
 
 function App() {
   return (
-    <SafeAreaProvider style={{ flex: 1 }}>
-      <ThemedApp />
-    </SafeAreaProvider>
+    <QueryClientProvider client={queryClient}>
+      <SafeAreaProvider style={{ flex: 1 }}>
+        <ThemedApp />
+      </SafeAreaProvider>
+    </QueryClientProvider>
   );
 }
 

@@ -17,8 +17,11 @@ const KliqFamilyListScreen = ({
   navigation,
 }: FamilyScreenProps<typeof KliqFamilyRoutes.KliqFamilyListScreen>) => {
   const { normalizeSize } = useTheme();
-  const { data, isLoading } = useChildrenData({ autoFetch: !useChildrenStore.getState().data });
+  const { data: storeData, isLoading } = useChildrenStore();
+  useChildrenData({ autoFetch: !storeData });
   const [isInfoModalVisible, setIsInfoModalVisible] = useState(false);
+
+  const children = storeData?.registeredChildren || [];
 
   const navigateToAddMember = () => navigation.navigate(KliqFamilyRoutes.AddKliqFamilyMemberScreen);
 
@@ -30,18 +33,13 @@ const KliqFamilyListScreen = ({
     navigation.navigate(KliqFamilyRoutes.KliqFamilyListDetailScreen, { child });
   };
 
-  if (isLoading) {
-    return null;
-  }
-
-  const children = data?.registeredChildren || [];
-
   const onCloseInfoModal = () => {
     setIsInfoModalVisible(false);
   };
 
   return (
     <Screen
+      isScreenLoading={isLoading}
       primaryButton={{
         text: 'Kliq Aileme Ekle',
         onPress: navigateToAddMember,

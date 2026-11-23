@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { NavigationBar } from '@/app/components/NavigationBar';
 import AddKliqFamilyMemberScreen from '@/features/family/screens/add-kliq-family-member/AddKliqFamilyMemberScreen';
+import KliqFamilyLimitAuthorityScreen from '@/features/family/screens/kliq-family-limit-authority/KliqFamilyLimitAuthorityScreen';
 import KliqFamilyListScreen from '@/features/family/screens/kliq-family-list/KliqFamilyListScreen';
 import KliqFamilyListDetailScreen from '@/features/family/screens/kliq-family-list-detail/KliqFamilyListDetailScreen';
 import KliqFamilyOnboardingScreen from '@/features/family/screens/kliq-family-onboarding/KliqFamilyOnboardingScreen';
@@ -79,6 +80,11 @@ export const FamilyNavigator = () => {
             headerShowHome: true,
           } as any
         }
+      />
+      <Stack.Screen
+        component={KliqFamilyLimitAuthorityScreen}
+        name={KliqFamilyRoutes.KliqFamilyLimitAuthorityScreen}
+        options={{ title: 'Limit ve Yetki İşlemleri' }}
       />
     </Stack.Navigator>
   );

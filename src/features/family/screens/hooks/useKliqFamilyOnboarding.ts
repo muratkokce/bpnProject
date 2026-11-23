@@ -1,45 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 import { globalAxios } from '@/core/api/globalAxios';
 import { API_ENDPOINTS } from '@/core/constants';
+import { useChildrenStore } from '@/core/store/childrenStore';
 
 import { SliderItem } from '../kliq-family-onboarding/components/slider';
 
-export const useKliqFamilyOnboarding = (attempt: number) => {
-  const [data, setData] = useState<SliderItem[]>([]);
-  const [error, setError] = useState<Error | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+export const useKliqFamilyOnboarding = () => {
+  const { setError } = useChildrenStore();
 
-  useEffect(() => {
-    const controller = new AbortController();
-    setIsLoading(true);
-    setError(null);
+  return useQuery({
+    queryKey: ['kliqFamilyOnboarding'],
+    queryFn: async () => {
+      try {
+        const { data } = await globalAxios.get<{ slides: SliderItem[] }>(
+          API_ENDPOINTS.FAMILY_ONBOARDING
+        );
 
-    globalAxios
-      .get<{ slides: SliderItem[] }>(API_ENDPOINTS.FAMILY_ONBOARDING, {
-        signal: controller.signal,
-      })
-      .then(({ data: response }) => {
-        if (!Array.isArray(response?.slides) || response.slides.length === 0) {
+        if (!Array.isArray(data?.slides) || data.slides.length === 0) {
           throw new Error('Onboarding slides are unavailable');
         }
-        if (!controller.signal.aborted) {
-          setData(response.slides);
-        }
-      })
-      .catch((requestError: unknown) => {
-        if (!controller.signal.aborted) {
-          setError(requestError instanceof Error ? requestError : new Error('Request failed'));
-        }
-      })
-      .finally(() => {
-        if (!controller.signal.aborted) {
-          setIsLoading(false);
-        }
-      });
 
-    return () => controller.abort();
-  }, [attempt]);
-
-  return { data, error, isLoading };
+        return data.slides;
+      } catch (err) {
+        const error = err instanceof Error ? err : new Error('Request failed');
+        setError(error);
+        throw error;
+      }
+    },
+  });
 };
