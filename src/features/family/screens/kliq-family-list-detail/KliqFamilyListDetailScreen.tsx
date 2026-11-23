@@ -43,7 +43,7 @@ const KliqFamilyListDetailScreen = ({
         <InfoCardContentContainer>
           <FamilyAvatar child={child} style={{ marginRight: normalizeSize(8) }} />
           <AccountCard>
-            <Text>{formatIban(child.account?.iban ?? '')}</Text>
+            <Text numberOfLines={2}>{formatIban(child.account?.iban ?? '')}</Text>
             <Text>Bakiye: {child.account?.formattedBalance}</Text>
           </AccountCard>
         </InfoCardContentContainer>

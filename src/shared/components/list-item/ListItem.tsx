@@ -8,7 +8,7 @@ import { Text } from '../text';
 import { ListItemContainer, ListItemContent } from './styles';
 import type { ListItemProps } from './types';
 
-const ListItem = ({ children, listTitle }: ListItemProps) => {
+const ListItem = ({ children, listTitle, numberOfLines = 2 }: ListItemProps) => {
   const { normalizeSize } = useTheme();
   const items = Array.isArray(children) ? children : children ? [children] : [];
 
@@ -37,7 +37,9 @@ const ListItem = ({ children, listTitle }: ListItemProps) => {
         >
           {icon && icon}
           <ListItemContent>
-            <Text variant="bodySemiBold">{title}</Text>
+            <Text numberOfLines={numberOfLines} variant="bodySemiBold">
+              {title}
+            </Text>
           </ListItemContent>
           <ArrowRight />
         </ListItemContainer>

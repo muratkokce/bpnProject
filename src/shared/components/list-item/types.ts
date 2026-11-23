@@ -11,4 +11,5 @@ export interface ListItemChildren {
 export interface ListItemProps {
   children?: ListItemChildren | ListItemChildren[];
   listTitle?: string;
+  numberOfLines?: number;
 }

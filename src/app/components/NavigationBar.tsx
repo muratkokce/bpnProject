@@ -51,7 +51,7 @@ export const NavigationBar = ({ title, navigation, showHomeIcon = false }: Navig
             <ArrowLeftIcon height={normalizeSize(24)} width={normalizeSize(24)} />
           </BackButton>
         )}
-        <TitleContainer marginLeft={navigation.canGoBack() ? 16 : 40}>
+        <TitleContainer marginLeft={normalizeSize(navigation.canGoBack() ? 16 : 40)}>
           <Text numberOfLines={1} textAlign="center" variant="title20Bold">
             {title}
           </Text>
