@@ -46,9 +46,3 @@ export const PermissionRow = styled.View`
     borderRadius: normalizeSize(8),
   })}
 `;
-
-export const SaveButtonContainer = styled.View`
-  ${({ theme: { normalizeSize } }) => ({
-    marginTop: normalizeSize(12),
-  })}
-`;

@@ -1,13 +1,14 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useImperativeHandle, useMemo, useState } from 'react';
 
 import { FlatList } from 'react-native';
 
 import { useTheme } from '@/assets/theme';
 import { useFamilyLimitAuthorityStore } from '@/core/store';
-import type { Tab } from '@/features/family/types/limitAuthority.types';
-import { Button } from '@/shared/components/button';
+import type { Permission, Tab } from '@/features/family/types/limitAuthority.types';
+import { InfoModal } from '@/shared/components/info-modal';
 import { Text } from '@/shared/components/text';
 import { Toggle } from '@/shared/components/toggle';
+import { showToast, ToastType } from '@/shared/utils';
 
 import {
   ContentColumn,
@@ -16,17 +17,33 @@ import {
   PermissionRow,
   PermissionsContainer,
   PermissionsContentContainer,
-  SaveButtonContainer,
 } from '../styles';
+
+export interface PermissionsBaseHandle {
+  requestSave: () => void;
+}
 
 interface PermissionsBaseProps {
   tab?: Tab;
   childId?: string;
+  onHasChangesChange?: (hasChanges: boolean) => void;
+  onSaved?: () => void;
+  ref?: React.Ref<PermissionsBaseHandle>;
 }
 
-export const PermissionsBase: React.FC<PermissionsBaseProps> = ({ tab, childId }) => {
+export const PermissionsBase: React.FC<PermissionsBaseProps> = ({
+  tab,
+  childId,
+  onHasChangesChange,
+  onSaved,
+  ref,
+}) => {
   const { colors, normalizeSize } = useTheme();
   const { updateTabPermissions } = useFamilyLimitAuthorityStore();
+  const notifications = useFamilyLimitAuthorityStore(
+    (state) => state.data?.permissionsByChild[childId ?? '']?.notifications
+  );
+  const [isSaveModalVisible, setIsSaveModalVisible] = useState(false);
   const [masterEnabled, setMasterEnabled] = useState(tab?.masterToggle.isEnabled ?? false);
   const [permissionsState, setPermissionsState] = useState(
     tab?.permissions.reduce((acc, perm) => {
@@ -34,6 +51,8 @@ export const PermissionsBase: React.FC<PermissionsBaseProps> = ({ tab, childId }
       return acc;
     }, {} as Record<string, boolean>) ?? {}
   );
+
+  const [pendingPermission, setPendingPermission] = useState<Permission | null>(null);
 
   const hasChanges = useMemo(() => {
     if (!tab) return false;
@@ -45,6 +64,12 @@ export const PermissionsBase: React.FC<PermissionsBaseProps> = ({ tab, childId }
 
     return masterChanged || permissionsChanged;
   }, [masterEnabled, permissionsState, tab]);
+
+  useImperativeHandle(ref, () => ({ requestSave: () => setIsSaveModalVisible(true) }), []);
+
+  useEffect(() => {
+    onHasChangesChange?.(hasChanges);
+  }, [hasChanges, onHasChangesChange]);
 
   if (!tab || !childId) {
     return null;
@@ -63,7 +88,7 @@ export const PermissionsBase: React.FC<PermissionsBaseProps> = ({ tab, childId }
     }
   };
 
-  const handlePermissionChange = (permissionId: string, value: boolean) => {
+  const applyPermissionChange = (permissionId: string, value: boolean) => {
     setPermissionsState((prev) => {
       const updated = { ...prev, [permissionId]: value };
 
@@ -77,8 +102,35 @@ export const PermissionsBase: React.FC<PermissionsBaseProps> = ({ tab, childId }
     });
   };
 
-  const handleSave = () => {
+  const handlePermissionToggle = (permission: Permission, value: boolean) => {
+    if (value && permission.requiresConfirmationOnEnable) {
+      setPendingPermission(permission);
+      return;
+    }
+    applyPermissionChange(permission.id, value);
+  };
+
+  const handleConfirmPendingPermission = () => {
+    if (pendingPermission) {
+      applyPermissionChange(pendingPermission.id, true);
+    }
+    setPendingPermission(null);
+  };
+
+  const handleConfirmSave = () => {
+    setIsSaveModalVisible(false);
     updateTabPermissions(childId, tab.tabId, masterEnabled, permissionsState);
+
+    const successToast = notifications?.saveSuccessToast;
+    if (successToast) {
+      showToast({
+        title: successToast.title,
+        message: successToast.message,
+        type: successToast.type.toLowerCase() as ToastType,
+      });
+    }
+
+    onSaved?.();
   };
 
   return (
@@ -119,7 +171,7 @@ export const PermissionsBase: React.FC<PermissionsBaseProps> = ({ tab, childId }
                   )}
                 </ContentColumn>
                 <Toggle
-                  onValueChange={(value) => handlePermissionChange(item.id, value)}
+                  onValueChange={(value) => handlePermissionToggle(item, value)}
                   value={permissionsState[item.id] ?? false}
                 />
               </PermissionRow>
@@ -128,9 +180,28 @@ export const PermissionsBase: React.FC<PermissionsBaseProps> = ({ tab, childId }
           scrollEnabled={false}
         />
       </PermissionsContentContainer>
-      <SaveButtonContainer>
-        <Button disabled={!hasChanges} onPress={handleSave} text="Kaydet" />
-      </SaveButtonContainer>
+      <InfoModal
+        description={notifications?.saveConfirmationModal.description ?? ''}
+        onClose={() => setIsSaveModalVisible(false)}
+        primaryButton={{
+          text: notifications?.saveConfirmationModal.confirmButtonText ?? 'Onayla',
+          onPress: handleConfirmSave,
+        }}
+        secondaryButton={{
+          text: notifications?.saveConfirmationModal.cancelButtonText ?? 'Vazgeç',
+          onPress: () => setIsSaveModalVisible(false),
+        }}
+        title={notifications?.saveConfirmationModal.title ?? ''}
+        visible={isSaveModalVisible}
+      />
+      <InfoModal
+        description={pendingPermission?.confirmationWarning ?? ''}
+        onClose={() => setPendingPermission(null)}
+        primaryButton={{ text: 'Onayla', onPress: handleConfirmPendingPermission }}
+        secondaryButton={{ text: 'Vazgeç', onPress: () => setPendingPermission(null) }}
+        title="Yetki Onayı"
+        visible={pendingPermission !== null}
+      />
     </PermissionsContainer>
   );
 };

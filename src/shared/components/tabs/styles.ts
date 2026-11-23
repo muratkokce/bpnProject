@@ -37,3 +37,10 @@ export const PagerScrollView = styled.ScrollView`
 export const PageContainer = styled.View<{ width: number }>`
   width: ${({ width }) => width}px;
 `;
+
+export const FooterContainer = styled.View`
+  ${({ theme: { normalizeSize } }) => ({
+    marginTop: 'auto',
+    paddingTop: normalizeSize(12),
+  })}
+`;

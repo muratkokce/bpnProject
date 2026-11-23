@@ -13,4 +13,6 @@ export interface TabsProps {
   mode?: TabsMode;
   initialIndex?: number;
   onIndexChange?: (index: number) => void;
+  /** Rendered below the pager, fixed at the bottom; does not slide with tab transitions. */
+  footer?: React.ReactNode;
 }

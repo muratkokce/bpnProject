@@ -11,6 +11,7 @@ import { useTheme } from '@/assets/theme';
 import { Text } from '@/shared/components/text';
 
 import {
+  FooterContainer,
   PageContainer,
   PagerScrollView,
   TabBarContainer,
@@ -20,7 +21,7 @@ import {
 } from './styles';
 import type { TabsProps } from './types';
 
-const Tabs = ({ items, mode = 'press', initialIndex = 0, onIndexChange }: TabsProps) => {
+const Tabs = ({ items, mode = 'press', initialIndex = 0, onIndexChange, footer }: TabsProps) => {
   const { colors } = useTheme();
   const [activeIndex, setActiveIndex] = useState(initialIndex);
   const [containerWidth, setContainerWidth] = useState(0);
@@ -86,6 +87,7 @@ const Tabs = ({ items, mode = 'press', initialIndex = 0, onIndexChange }: TabsPr
           </PageContainer>
         ))}
       </PagerScrollView>
+      {footer && <FooterContainer>{footer}</FooterContainer>}
     </TabsContainer>
   );
 };
