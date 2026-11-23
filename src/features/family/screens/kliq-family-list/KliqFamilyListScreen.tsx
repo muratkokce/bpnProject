@@ -22,6 +22,9 @@ const KliqFamilyListScreen = ({
   const [isInfoModalVisible, setIsInfoModalVisible] = useState(false);
 
   const children = storeData?.registeredChildren || [];
+  const maxAllowedChildren = storeData?.parentInfo.maxAllowedChildren;
+  const isChildLimitReached =
+    maxAllowedChildren !== undefined && children.length >= maxAllowedChildren;
 
   const navigateToAddMember = () => navigation.navigate(KliqFamilyRoutes.AddKliqFamilyMemberScreen);
 
@@ -43,6 +46,7 @@ const KliqFamilyListScreen = ({
       primaryButton={{
         text: 'Kliq Aileme Ekle',
         onPress: navigateToAddMember,
+        disabled: isChildLimitReached,
       }}
     >
       <Text variant="captionBold">Kliq Ailem</Text>
