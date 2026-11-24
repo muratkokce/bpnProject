@@ -1,7 +1,6 @@
 import React from 'react';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Pressable } from 'react-native';
 
 import { TabRoutes } from '@/app/navigation/routes';
 import { RootTabScreenProps } from '@/app/navigation/types';
@@ -9,7 +8,7 @@ import { Text } from '@/shared/components/text';
 import { showToast } from '@/shared/utils';
 import { FAMILY_ONBOARDING_COMPLETED_KEY } from '@/storage';
 
-import { AccountsContainer, Description, Title } from './styles';
+import { AccountsContainer, ButtonContainer } from './styles';
 
 const AccountsScreen = ({}: RootTabScreenProps<typeof TabRoutes.Accounts>) => {
   const clearFamilyOnboarding = async () => {
@@ -23,15 +22,11 @@ const AccountsScreen = ({}: RootTabScreenProps<typeof TabRoutes.Accounts>) => {
 
   return (
     <AccountsContainer>
-      <Title>Hesaplarım</Title>
-      <Description>Banka hesaplarınız burada görüntülenecek</Description>
-      <Pressable
-        accessibilityRole="button"
-        onPress={clearFamilyOnboarding}
-        style={{ marginTop: 12, padding: 12 }}
-      >
+      <Text variant="bodyBold">Hesaplarım</Text>
+      <Text variant="bodyMedium">Banka hesaplarınız burada görüntülenecek</Text>
+      <ButtonContainer accessibilityRole="button" onPress={clearFamilyOnboarding}>
         <Text>Belleği Temizle</Text>
-      </Pressable>
+      </ButtonContainer>
     </AccountsContainer>
   );
 };

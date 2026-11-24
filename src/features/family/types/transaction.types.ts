@@ -16,7 +16,7 @@ export interface Transaction {
   title: string;
   category: string;
   categoryIcon: string;
-  type: 'EXPENSE' | 'INCOME';
+  type: 'EXPENSE' | 'INCOME' | 'PENDING_APPROVAL';
   status: 'PENDING_APPROVAL' | 'COMPLETED' | string;
   amount: number;
   formattedAmount: string;

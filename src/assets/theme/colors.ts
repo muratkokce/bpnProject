@@ -12,6 +12,8 @@ export const colors = {
     purple: '#F9F8FF',
     secondary: '#222B45',
     yellow: '#FADE4B',
+    green: '#B4F4DC',
+    green50: '#82ECC4',
   },
   opacity: {
     blackOpacity10: '#0000001A',

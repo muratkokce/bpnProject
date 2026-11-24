@@ -1,12 +1,16 @@
 import React from 'react';
 
-import { CardsContainer, Description, Title } from './styles';
+import { TabRoutes } from '@/app/navigation/routes';
+import { RootTabScreenProps } from '@/app/navigation/types';
+import { Text } from '@/shared/components/text';
 
-const CardsScreen = () => {
+import { CardsContainer } from './styles';
+
+const CardsScreen = ({}: RootTabScreenProps<typeof TabRoutes.Cards>) => {
   return (
     <CardsContainer>
-      <Title>Kartlarım</Title>
-      <Description>Kredi ve banka kartlarınız burada görüntülenecek</Description>
+      <Text variant="bodyBold">Kartlarım</Text>
+      <Text variant="bodyMedium">Kredi ve banka kartlarınız burada görüntülenecek</Text>
     </CardsContainer>
   );
 };
