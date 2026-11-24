@@ -22,14 +22,13 @@ export const PickerHeader = styled.View`
     flexDirection: 'row',
     justifyContent: 'flex-end',
     paddingHorizontal: normalizeSize(16),
-    paddingVertical: normalizeSize(12),
+    paddingTop: normalizeSize(8),
+    paddingBottom: normalizeSize(16),
   })}
 `;
 
 export const DoneButton = styled.Pressable`
-  ${({ theme: { normalizeSize } }) => ({
-    padding: normalizeSize(4),
-  })}
+  ${() => ({})}
 `;
 
 export const StyledPicker = styled(Picker)`
