@@ -49,8 +49,8 @@ A mobile banking application module developed with React Native, focused on fami
 
 <p align="center">
   <img src="./screenshots/family/child/list.png" width="200" />
-  <img src="./screenshots/family/child/add.png" width="200" />
   <img src="./screenshots/family/child/detail.png" width="200" />
+  <img src="./screenshots/family/child/add.png" width="200" />
 </p>
 
 ### Limits & Permissions

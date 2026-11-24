@@ -49,8 +49,8 @@ React Native ile geliştirilmiş, aile bankacılığına ("Kliq Ailem") odaklana
 
 <p align="center">
   <img src="./screenshots/family/child/list.png" width="200" />
-  <img src="./screenshots/family/child/add.png" width="200" />
   <img src="./screenshots/family/child/detail.png" width="200" />
+  <img src="./screenshots/family/child/add.png" width="200" />
 </p>
 
 ### Limit ve Yetkiler
